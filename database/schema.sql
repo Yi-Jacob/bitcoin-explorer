@@ -17,8 +17,6 @@ CREATE TABLE "public"."bookmarks" (
   OIDS=FALSE
 );
 
-
-
 CREATE TABLE "public"."users" (
 	"userId" serial NOT NULL,
 	"username" TEXT NOT NULL UNIQUE,
