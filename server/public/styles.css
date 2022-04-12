@@ -1,9 +1,7 @@
+@import "node_modules/bootstrap/scss/bootstrap";
+
 .orange {
   color: #f6781e;
-}
-
-.black {
-  background-color: black;
 }
 
 .raleway {
@@ -23,4 +21,8 @@
   background-color: #212529;
   border-radius: 5%;
   border: 1px #f6781e solid;
+}
+
+.navbar-custom {
+  background-color: black;
 }
