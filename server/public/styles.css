@@ -5,3 +5,25 @@
 .black {
   background-color: black;
 }
+
+.search-button {
+  border-radius: #f6781e;
+  color: black;
+}
+
+.raleway {
+  font-family: Raleway, sans-serif;
+}
+
+.font-bold {
+  font-weight: 900;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.variant-outline-primary {
+  color: #f6781e;
+  border-radius: #f6781e;
+}

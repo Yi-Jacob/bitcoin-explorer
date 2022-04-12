@@ -9,19 +9,19 @@ export default function Home(props) {
     <>
       <Navbar className='bg-dark black navbar-dark'>
         <div className="container">
-          <Navbar.Brand href="#home" className='orange'>
-            <div className="orange">
+          <Navbar.Brand href="#home" className='orange font-italic font-bold'>
+            <div className="orange raleway">
               <i className="fa-brands fa-btc orange" />itcoin Exlorer
             </div>
           </Navbar.Brand>
           <Form className="d-flex">
             <FormControl
               type="search"
-              placeholder="Search"
-              className="me-2"
+              placeholder="Search for Wallet"
+              className="me-3"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search for Wallet Address</Button>
+            <Button className='orange' variant="outline-secondary">Search</Button>
           </Form>
         </div>
       </Navbar>
