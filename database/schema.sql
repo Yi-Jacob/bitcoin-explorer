@@ -26,6 +26,4 @@ CREATE TABLE "public"."users" (
   OIDS=FALSE
 );
 
-
-
 ALTER TABLE "bookmarks" ADD CONSTRAINT "bookmarks_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
