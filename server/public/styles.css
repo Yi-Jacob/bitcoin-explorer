@@ -26,3 +26,18 @@
 .navbar-custom {
   background-color: black;
 }
+
+.black {
+  color: black;
+}
+
+.submit-button {
+  background-color: white;
+  border: 2px #d4d9de;
+  color: #8a8a8e;
+}
+
+.search-icon {
+  color: #8a8a8e;
+  border: 1px #d4d9de solid;
+}
