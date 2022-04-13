@@ -17,7 +17,6 @@
   font-style: italic;
   font-family: Raleway, sans-serif;
   font-size: 28px;
-  display: block;
 }
 
 .font-bold {
@@ -31,7 +30,6 @@
 .navbar-custom {
   background: black;
   height: 125px;
-  flex-direction: column;
 }
 
 .search-button {
@@ -50,6 +48,6 @@
   border: black 1px solid;
 }
 
-.margin-auto {
-  margin: auto;
+.nav-input {
+  width: 275px;
 }

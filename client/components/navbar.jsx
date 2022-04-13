@@ -39,24 +39,25 @@ class Nav extends React.Component {
   render() {
     return (
       <>
-
-        <Navbar className='navbar-custom'>
-          <div className="container">
+        <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
+          <div className="container-fluid">
             <Navbar.Brand href="#home" className='orange nav-font'>
               <div className="orange font-raleway">
                 <i className="fa-brands fa-btc orange" />itcoin Exlorer
               </div>
             </Navbar.Brand>
+
             <Form className="d-flex" onSubmit={this.handleSubmit}>
-              <FormControl
-                type="search"
-                placeholder="Search for Wallet"
-                className="me-3"
-                aria-label="Search"
-                value={this.state.input} onChange={this.handleChange}
-              />
-              <Button className="search-button" value={this.state.input} onChange={this.handleChange} type='submit'>Search</Button>
+                <FormControl
+                  type="search"
+                placeholder="Search for your Wallet Address"
+                  className="me-3 nav-input"
+                  aria-label="Search"
+                  value={this.state.input} onChange={this.handleChange}
+                />
+                <Button className="search-button" value={this.state.input} onChange={this.handleChange} type='submit'>Search</Button>
             </Form>
+
           </div>
         </Navbar>
       </>
