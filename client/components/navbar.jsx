@@ -43,7 +43,7 @@ class Nav extends React.Component {
         <Navbar className='navbar-custom'>
           <div className="container">
             <Navbar.Brand href="#home" className='orange nav-font'>
-              <div className="orange raleway">
+              <div className="orange font-raleway">
                 <i className="fa-brands fa-btc orange" />itcoin Exlorer
               </div>
             </Navbar.Brand>

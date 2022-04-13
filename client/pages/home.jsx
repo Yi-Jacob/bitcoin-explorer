@@ -39,16 +39,20 @@ export default class Home extends React.Component {
     return (
       <>
         <Nav />
-        <div className="container-fluid">
-          <div className="row orange font-italic font-bold">
-            <h1 className='text-center'> <i className="fa-brands fa-btc" />itcoin Exlorer</h1>
+        <div className="container my-2 mx-auto margin-auto">
+          <div className="row orange font-italic font-bold my-4">
+            <div className="col-sm-12">
+              <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Exlorer</h1>
+            </div>
           </div>
-          <div className="row">
-            <h2 className='text-center'>Your one-stop shop to explore the Bitcoin Blockchain</h2>
+          <div className="row my-3 justify-content-center">
+            <div className="col-sm-12">
+              <h2 className='text-center font-titillium-web font-italic font-bold'>Your one-stop shop to explore the Bitcoin Blockchain</h2>
+            </div>
           </div>
-          <div className="row">
-            <Form onSubmit={this.handleSubmit}>
-              <InputGroup className="mb-3" onSubmit={this.handleSubmit}>
+          <div className="row justify-content-center">
+            <Form onSubmit={this.handleSubmit} className='my-3 px-5 "col-sm-11'>
+              <InputGroup className="mb-2" onSubmit={this.handleSubmit}>
                 <FormControl
                   placeholder="Search for your wallet address"
                   aria-describedby="basic-addon2"
@@ -61,8 +65,10 @@ export default class Home extends React.Component {
               </InputGroup>
             </Form>
           </div>
-          <div className="row">
-            <h2 className='text-center'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)”  Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
+          <div className="row my-4 px-2 justify-content-center">
+            <div className="col-sm-11">
+              <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)”  Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
+            </div>
           </div>
         </div>
 

@@ -4,8 +4,12 @@
   color: #f6781e;
 }
 
-.raleway {
+.font-raleway {
   font-family: Raleway, sans-serif;
+}
+
+.font-titillium-web {
+  font-family: "Titillium Web", sans-serif;
 }
 
 .nav-font {
@@ -13,10 +17,11 @@
   font-style: italic;
   font-family: Raleway, sans-serif;
   font-size: 28px;
+  display: block;
 }
 
 .font-bold {
-  font-weight: 900;
+  font-weight: 850;
 }
 
 .font-italic {
@@ -25,15 +30,26 @@
 
 .navbar-custom {
   background: black;
-  height: 70px;
+  height: 125px;
+  flex-direction: column;
 }
 
 .search-button {
   color: #f6781e;
-  background: black;
+  background: none;
   border: #f6781e 1px solid;
 }
 
 .orange-border {
   border: #f6781e 1px solid;
+}
+
+.search-button:hover {
+  color: black;
+  background: #f6781e;
+  border: black 1px solid;
+}
+
+.margin-auto {
+  margin: auto;
 }
