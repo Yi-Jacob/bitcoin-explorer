@@ -39,13 +39,13 @@ export default class Home extends React.Component {
     return (
       <>
         <Nav />
-        <div className="container my-2 mx-auto margin-auto">
-          <div className="row orange font-italic font-bold my-4">
+        <div className="container">
+          <div className="row orange my-4">
             <div className="col-sm-12">
               <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Exlorer</h1>
             </div>
           </div>
-          <div className="row my-3 justify-content-center">
+          <div className="row my-3">
             <div className="col-sm-12">
               <h2 className='text-center font-titillium-web font-italic font-bold'>Your one-stop shop to explore the Bitcoin Blockchain</h2>
             </div>
@@ -55,23 +55,21 @@ export default class Home extends React.Component {
               <InputGroup className="mb-2" onSubmit={this.handleSubmit}>
                 <FormControl
                   placeholder="Search for your Wallet Address"
-                  aria-describedby="basic-addon2"
-                  value={this.state.input} onChange={this.handleChange} onSubmit={this.handleSubmit}
+                  onChange={this.handleChange} onSubmit={this.handleSubmit}
                   className='orange-border'
                 />
-                <Button className="search-button" id="button-addon2" value={this.state.input} onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>
+                <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>
                   Search
                 </Button>
               </InputGroup>
             </Form>
           </div>
           <div className="row my-4 px-2 justify-content-center">
-            <div className="col-sm-11">
-              <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)”  Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
+            <div className="col-sm-10">
+              <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)” -Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
             </div>
           </div>
         </div>
-
       </>
     );
   }

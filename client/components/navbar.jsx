@@ -1,8 +1,5 @@
 import React from 'react';
-import Navbar from 'react-bootstrap/Navbar';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
+import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
 class Nav extends React.Component {
   constructor(props) {
@@ -31,7 +28,6 @@ class Nav extends React.Component {
     fetch(`https://mempool.space/api/address/${address}/txs`)
       .then(res => res.json())
       .then(data => {
-
         // console.log(data);
       });
   }
@@ -52,10 +48,9 @@ class Nav extends React.Component {
                   type="search"
                 placeholder="Search for your Wallet Address"
                   className="me-3 nav-input"
-                  aria-label="Search"
-                  value={this.state.input} onChange={this.handleChange}
+                  onChange={this.handleChange}
                 />
-                <Button className="search-button" value={this.state.input} onChange={this.handleChange} type='submit'>Search</Button>
+                <Button className="search-button" onChange={this.handleChange} type='submit'>Search</Button>
             </Form>
 
           </div>
