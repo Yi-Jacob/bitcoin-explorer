@@ -46,9 +46,10 @@ class Nav extends React.Component {
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
-                placeholder="Search for Wallet Address"
+                  placeholder="Search for Wallet Address"
                   className="me-3 nav-input"
                   onChange={this.handleChange}
+                  value={this.state.input}
                 />
                 <Button className="search-button" onChange={this.handleChange} type='submit'>Search</Button>
             </Form>

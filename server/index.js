@@ -3,7 +3,6 @@ const express = require('express');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
-// const argon2 = require('argon2');
 const ClientError = require('./client-error');
 
 const app = express();
@@ -26,8 +25,8 @@ app.get('/api/bookmarks', (req, res) => {
   `;
   db.query(sql)
     .then(result => {
-      const grade = result.rows;
-      res.status(200).json(grade);
+      const bookmarks = result.rows;
+      res.status(200).json(bookmarks);
     })
     .catch(error => {
       console.error(error);
@@ -65,7 +64,7 @@ app.post('/api/bookmarks', (req, res, next) => {
 });
 
 app.delete('/api/bookmark/:bookmarkId', (req, res) => {
-  const bookmarkId = Number(req.params.userId);
+  const bookmarkId = Number(req.params.bookmarkId);
   const sql = `
   delete from "bookmarks"
   where "bookmarkId" = ${bookmarkId}
