@@ -3,7 +3,7 @@ const express = require('express');
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
-const argon2 = require('argon2');
+// const argon2 = require('argon2');
 const ClientError = require('./client-error');
 
 const app = express();
@@ -19,7 +19,7 @@ const db = new pg.Pool({
   }
 });
 
-app.get('/api', (req, res) => {
+app.get('/api/bookmarks', (req, res) => {
   const sql = `
     select *
       from "bookmarks"
@@ -35,29 +35,6 @@ app.get('/api', (req, res) => {
         error: 'An unexpected error occurred.'
       });
     });
-});
-
-app.post('/api/users', (req, res, next) => {
-  const { username, password } = req.body;
-  if (!username || !password) {
-    throw new ClientError(401, 'invalid login');
-  }
-  argon2
-    .hash(password)
-    .then(hashedPassword => {
-      const sql = `
-        insert into "users" ("username", "hashedPassword")
-        values ($1, $2)
-        returning "userId", "username", "createdAt"
-      `;
-      const params = [username, hashedPassword];
-      return db.query(sql, params);
-    })
-    .then(result => {
-      const [user] = result.rows;
-      res.status(201).json(user);
-    })
-    .catch(err => next(err));
 });
 
 app.post('/api/bookmarks', (req, res, next) => {
@@ -84,31 +61,6 @@ app.post('/api/bookmarks', (req, res, next) => {
       res.status(500).json({
         error: 'An unexpected error occurred.'
       });
-    });
-});
-
-app.delete('/api/users/:userId', (req, res) => {
-  const userId = Number(req.params.userId);
-  const sql = `
-  delete from "users"
-  where "userId" = ${userId}
-  returning *
-  `;
-  if (!Number(userId)) {
-    throw new ClientError(401, 'invalid login');
-  }
-  db.query(sql)
-    .then(res => {
-      const deletedUser = res.rows[0];
-      if (!deletedUser) {
-        res.status(404).json({ error: `GradeId ${userId} does not exist in grades table!` });
-      } else {
-        res.status(204).json(deletedUser);
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'An unexpected error occured.' });
     });
 });
 

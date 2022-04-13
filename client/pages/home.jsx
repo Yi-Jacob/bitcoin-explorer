@@ -54,7 +54,7 @@ export default class Home extends React.Component {
             <Form onSubmit={this.handleSubmit} className='my-3 px-5 "col-sm-11'>
               <InputGroup className="mb-2" onSubmit={this.handleSubmit}>
                 <FormControl
-                  placeholder="Search for your Wallet Address"
+                  placeholder="Search for Wallet Address"
                   onChange={this.handleChange} onSubmit={this.handleSubmit}
                   className='orange-border'
                 />
