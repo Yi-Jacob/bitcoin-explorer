@@ -10,8 +10,8 @@ export default class Home extends React.Component {
     super(props);
     this.state = ({
       input: '',
-      data1: [],
-      data2: []
+      walletData: [],
+      transactionData: []
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,12 +27,12 @@ export default class Home extends React.Component {
     fetch(`https://mempool.space/api/address/${address}`)
       .then(res => res.json())
       .then(data => {
-        this.setState({ data1: data });
+        this.setState({ walletData: data });
       });
     fetch(`https://mempool.space/api/address/${address}/txs`)
       .then(res => res.json())
       .then(data => {
-        this.setState({ data2: data });
+        this.setState({ transactionData: data });
       });
   }
 
