@@ -6,7 +6,8 @@ class Nav extends React.Component {
     super(props);
     this.state = ({
       input: '',
-      data: []
+      data1: [],
+      data2: []
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,13 +23,12 @@ class Nav extends React.Component {
     fetch(`https://mempool.space/api/address/${address}`)
       .then(res => res.json())
       .then(data => {
-
-        // console.log(data);
+        this.setState({ data1: data });
       });
     fetch(`https://mempool.space/api/address/${address}/txs`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
+        this.setState({ data2: data });
       });
   }
 

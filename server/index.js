@@ -1,14 +1,16 @@
 require('dotenv/config');
 const express = require('express');
+const app = express();
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
 const ClientError = require('./client-error');
 
-const app = express();
+const expressJson = express.json();
+
+app.use(expressJson);
 
 app.use(staticMiddleware);
-
 app.use(errorMiddleware);
 
 const db = new pg.Pool({
@@ -37,13 +39,13 @@ app.get('/api/bookmarks', (req, res) => {
 });
 
 app.post('/api/bookmarks', (req, res, next) => {
-  const { walletAddress, data } = req.body;
+  const { bookmarkId, userId, walletAddress, data, bookmarkedAt } = req.body;
   const sql = `
-  insert into "bookmarks" ("walletAddress", "data")
-  values ($1, $2)
+  insert into "bookmarks" ("bookmarkId", "userId", "walletAddress", "data", "bookmarkedAt")
+  values ($1, $2, $3, $4, $5)
   returning *
   `;
-  const bookmark = [walletAddress, data];
+  const bookmark = [bookmarkId, userId, walletAddress, data, bookmarkedAt];
   if ((!walletAddress) || (!data)) {
     res.status(400).json({
       error: 'Please include both fields'
@@ -74,8 +76,8 @@ app.delete('/api/bookmark/:bookmarkId', (req, res) => {
     throw new ClientError(401, 'invalid login');
   }
   db.query(sql)
-    .then(res => {
-      const deletedBookmark = res.rows[0];
+    .then(result => {
+      const deletedBookmark = result.rows[0];
       if (!deletedBookmark) {
         res.status(404).json({ error: `BookmarkId ${bookmarkId} does not exist in bookmarks table!` });
       } else {
