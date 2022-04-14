@@ -1,0 +1,51 @@
+.orange {
+  color: #f6781e;
+}
+
+.font-raleway {
+  font-family: Raleway, sans-serif;
+}
+
+.font-titillium-web {
+  font-family: "Titillium Web", sans-serif;
+}
+
+.nav-font {
+  font-weight: 900;
+  font-style: italic;
+  font-family: Raleway, sans-serif;
+  font-size: 28px;
+}
+
+.font-bold {
+  font-weight: 850;
+}
+
+.font-italic {
+  font-style: italic;
+}
+
+.navbar-custom {
+  background: black;
+  height: 120px;
+}
+
+.search-button {
+  color: #f6781e;
+  background: none;
+  border: #f6781e 1px solid;
+}
+
+.orange-border {
+  border: #f6781e 1px solid;
+}
+
+.search-button:hover {
+  color: black;
+  background: #f6781e;
+  border: black 1px solid;
+}
+
+.nav-input {
+  width: 275px;
+}
