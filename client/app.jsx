@@ -17,7 +17,6 @@ export default class App extends React.Component {
           <Switch>
             <Route exact path="/"
               component={Home} />
-
             <Route exact path="/search-results"
               component={Results} />
           </Switch>

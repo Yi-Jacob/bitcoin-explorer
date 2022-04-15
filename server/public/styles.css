@@ -49,3 +49,11 @@
 .nav-input {
   width: 275px;
 }
+
+.padding-zero {
+  padding: 0;
+}
+
+.address-header {
+  width: 80%;
+}

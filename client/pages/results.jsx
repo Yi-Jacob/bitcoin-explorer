@@ -8,6 +8,7 @@ export default class Results extends React.Component {
     super(props);
     this.state = ({
       address: queryString.parse(this.props.location.search).address,
+      input: '',
       walletData: {
         chain_stats: {
           tx_count: 0,
@@ -15,15 +16,35 @@ export default class Results extends React.Component {
           spent_txo_sum: 0
         }
       },
-      transactionData: []
+      transactionData: [
+        {
+          txid: '',
+          status: {
+            block_height: 0
+          }
+        },
+        {
+          txid: '',
+          status: {
+            block_height: 0
+          }
+        },
+        {
+          txid: '',
+          status: {
+            block_height: 0
+          }
+        }
+      ]
     });
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
     fetch(`https://mempool.space/api/address/${this.state.address}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         this.setState({ walletData: data });
       });
     fetch(`https://mempool.space/api/address/${this.state.address}/txs`)
@@ -34,14 +55,61 @@ export default class Results extends React.Component {
       });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.history.push('/search-results?address=' + this.state.input);
+  }
+
+  handleChange(event) {
+    this.setState({ input: event.target.value });
+  }
+
   render() {
     return (
       <>
-        <Nav history={this.props.history} />
-        <Card>
-          <Card.Header>Address: {this.state.walletData.address}</Card.Header>
-          <Card.Title>Title {this.state.walletData.chain_stats.tx_count}</Card.Title>
-        </Card>
+        <Nav />
+        <div className="container-fluid">
+          <div className="row-fluid my-4 mx-auto px-4 py-4">
+            <h1 className='address-header'>Search Address: {this.state.walletData.address}</h1>
+          </div>
+          <div className="row my-4 mx-auto px-0 mx-0">
+            <Card className='orange-border'>
+              <Card.Title>Address: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
+              <Card.Title>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
+            </Card>
+          </div>
+          <div className="row my-4 mx-auto px-0 mx-0">
+            <Card className='orange-border padding-zero '>
+              <Card.Header className='orange-border mx-0'>Last 3 Transactions</Card.Header>
+              <ul>
+                <li>
+                  <Card.Title>Transaction ID:{this.state.transactionData[0].txid}</Card.Title>
+                  <ul>
+                    <li>
+                      <Card.Title>Block Height:{this.state.transactionData[0].status.block_height}</Card.Title>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Card.Title>Transaction ID:{this.state.transactionData[1].txid}</Card.Title>
+                  <ul>
+                    <li>
+                      <Card.Title>Block Height:{this.state.transactionData[1].status.block_height}</Card.Title>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Card.Title>Transaction ID:{this.state.transactionData[2].txid}</Card.Title>
+                  <ul>
+                    <li>
+                      <Card.Title>Block Height:{this.state.transactionData[2].status.block_height}</Card.Title>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </Card>
+          </div>
+        </div>
       </>
     );
   }
