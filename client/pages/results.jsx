@@ -50,7 +50,6 @@ export default class Results extends React.Component {
     fetch(`https://mempool.space/api/address/${this.state.address}/txs`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
         this.setState({ transactionData: data });
       });
   }
@@ -67,9 +66,9 @@ export default class Results extends React.Component {
   render() {
     return (
       <>
-        <Nav onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange}/>
         <div className="container-fluid">
-          <div className="row my-4 mx-auto justify-content-center">
+          <div className="row my-4">
             <div className='col-sm-10'>
               <p className='address-header font-titillium-web'>Search Address: {this.state.walletData.address}</p>
             </div>
