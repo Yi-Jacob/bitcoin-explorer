@@ -67,21 +67,23 @@ export default class Results extends React.Component {
   render() {
     return (
       <>
-        <Nav />
+        <Nav onSubmit={this.handleSubmit} onChange={this.handleChange}/>
         <div className="container-fluid">
-          <div className="row-fluid my-4 mx-auto px-4 py-4">
-            <h1 className='address-header'>Search Address: {this.state.walletData.address}</h1>
+          <div className="row my-4 mx-auto justify-content-center">
+            <div className='col-sm-10'>
+              <p className='address-header font-titillium-web'>Search Address: {this.state.walletData.address}</p>
+            </div>
           </div>
           <div className="row my-4 mx-auto px-0 mx-0">
-            <Card className='orange-border'>
-              <Card.Title>Address: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
+            <Card className='orange-border font-titillium-web px-4 py-4'>
+              <Card.Title>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
               <Card.Title>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
             </Card>
           </div>
           <div className="row my-4 mx-auto px-0 mx-0">
             <Card className='orange-border padding-zero '>
-              <Card.Header className='orange-border mx-0'>Last 3 Transactions</Card.Header>
-              <ul>
+              <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
+              <ul className='px-4 py-2'>
                 <li>
                   <Card.Title>Transaction ID:{this.state.transactionData[0].txid}</Card.Title>
                   <ul>
