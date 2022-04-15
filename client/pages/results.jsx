@@ -1,13 +1,20 @@
 import React from 'react';
 import queryString from 'query-string';
 import Nav from '../components/navbar';
+import Card from 'react-bootstrap/Card';
 
 export default class Results extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
       address: queryString.parse(this.props.location.search).address,
-      walletData: [],
+      walletData: {
+        chain_stats: {
+          tx_count: 0,
+          funded_txo_sum: 0,
+          spent_txo_sum: 0
+        }
+      },
       transactionData: []
     });
   }
@@ -31,6 +38,10 @@ export default class Results extends React.Component {
     return (
       <>
         <Nav history={this.props.history} />
+        <Card>
+          <Card.Header>Address: {this.state.walletData.address}</Card.Header>
+          <Card.Title>Title {this.state.walletData.chain_stats.tx_count}</Card.Title>
+        </Card>
       </>
     );
   }
