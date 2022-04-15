@@ -1,16 +1,18 @@
 import React from 'react';
-import Nav from '../components/navbar';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import parseRoute from '../lib/parse-route';
+import Nav from '../components/navbar';
 
 export default class Home extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = ({
-      route: parseRoute(window.location.hash)
+      input: '',
+      walletData: [],
+      transactionData: []
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,17 +24,13 @@ export default class Home extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const address = this.state.input;
-    window.addEventListener('hashchange', () => {
-      const parsedRoute = parseRoute(address);
-      this.setState({ route: parsedRoute });
-    });
+    this.props.history.push('/search-results?address=' + this.state.input);
   }
 
   render() {
     return (
       <>
-        <Nav />
+        <Nav history={this.props.history} />
         <div className="container">
           <div className="row orange my-4">
             <div className="col-sm-12">
@@ -64,7 +62,6 @@ export default class Home extends React.Component {
             </div>
           </div>
         </div>
-
       </>
     );
   }
