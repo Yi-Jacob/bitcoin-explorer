@@ -92,26 +92,26 @@ export default class Results extends React.Component {
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>
                 <li>
-                  <Card.Title>Transaction ID:{this.state.transactionData[0].txid}</Card.Title>
+                  <Card.Title>Transaction ID: {this.state.transactionData[0].txid}</Card.Title>
                   <ul>
                     <li>
-                      <Card.Title>Block Height:{this.state.transactionData[0].status.block_height}</Card.Title>
+                      <Card.Title>Block Height: {this.state.transactionData[0].status.block_height}</Card.Title>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <Card.Title>Transaction ID:{this.state.transactionData[1].txid}</Card.Title>
+                  <Card.Title>Transaction ID: {this.state.transactionData[1].txid}</Card.Title>
                   <ul>
                     <li>
-                      <Card.Title>Block Height:{this.state.transactionData[1].status.block_height}</Card.Title>
+                      <Card.Title>Block Height: {this.state.transactionData[1].status.block_height}</Card.Title>
                     </li>
                   </ul>
                 </li>
                 <li>
-                  <Card.Title>Transaction ID:{this.state.transactionData[2].txid}</Card.Title>
+                  <Card.Title>Transaction ID: {this.state.transactionData[2].txid}</Card.Title>
                   <ul>
                     <li>
-                      <Card.Title>Block Height:{this.state.transactionData[2].status.block_height}</Card.Title>
+                      <Card.Title>Block Height: {this.state.transactionData[2].status.block_height}</Card.Title>
                     </li>
                   </ul>
                 </li>
