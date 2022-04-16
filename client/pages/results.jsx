@@ -42,12 +42,20 @@ export default class Results extends React.Component {
   }
 
   componentDidMount() {
-    fetch(`https://mempool.space/api/address/${this.state.address}`)
+    this.unlisten = this.props.history.listen((location, action) => {
+      this.setState({ address: queryString.parse(location.search).address });
+      this.fetchDataApi(queryString.parse(location.search).address);
+    });
+    this.fetchDataApi(this.state.address);
+  }
+
+  fetchDataApi(address) {
+    fetch(`https://mempool.space/api/address/${address}`)
       .then(res => res.json())
       .then(data => {
         this.setState({ walletData: data });
       });
-    fetch(`https://mempool.space/api/address/${this.state.address}/txs`)
+    fetch(`https://mempool.space/api/address/${address}/txs`)
       .then(res => res.json())
       .then(data => {
         this.setState({ transactionData: data });
