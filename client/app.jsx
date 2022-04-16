@@ -1,14 +1,16 @@
 import React from 'react';
 import Home from './pages/home';
 import Results from './pages/results';
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom';
+import parseRoute from './lib/parse-route';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      route: parseRoute(window.location.hash)
+    };
+  }
 
   render() {
     return (

@@ -66,21 +66,21 @@ export default class Results extends React.Component {
   render() {
     return (
       <>
-        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange}/>
+        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
         <div className="container-fluid">
           <div className="row my-4">
             <div className='col-sm-10'>
-              <p className='address-header font-titillium-web'>Search Address: {this.state.walletData.address}</p>
+              <p className='address-header font-titillium-web font-underline'>Search Address: {this.state.walletData.address}</p>
             </div>
           </div>
-          <div className="row my-4 mx-auto px-0 mx-0">
-            <Card className='orange-border font-titillium-web px-4 py-4'>
+          <div className="row my-4 mx-auto px-0 justify-content-center">
+            <Card className='orange-border font-titillium-web px-4 py-4 grey-background font-size-32'>
               <Card.Title>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
               <Card.Title>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
             </Card>
           </div>
-          <div className="row my-4 mx-auto px-0 mx-0">
-            <Card className='orange-border padding-zero '>
+          <div className="row my-4 mx-auto px-0 justify-content-center grey-background">
+            <Card className='orange-border padding-zero grey-background font-size-20'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>
                 <li>

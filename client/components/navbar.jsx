@@ -32,14 +32,14 @@ class Nav extends React.Component {
             </Navbar.Brand>
 
             <Form className="d-flex" onSubmit={this.handleSubmit}>
-              <FormControl
-                type="search"
-                placeholder="Search for Wallet Address"
-                className="me-3 nav-input"
-                onChange={this.handleChange} onSubmit={this.handleSubmit}
-                value={this.state.input}
-              />
-              <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>Search</Button>
+                <FormControl
+                  type="search"
+                  placeholder="Search for Wallet Address"
+                  className="me-3 nav-input"
+                  onChange={this.handleChange} onSubmit={this.handleSubmit}
+                  value={this.state.input}
+                />
+                <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>Search</Button>
             </Form>
           </div>
         </Navbar>
