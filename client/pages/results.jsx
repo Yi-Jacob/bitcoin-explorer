@@ -44,12 +44,12 @@ export default class Results extends React.Component {
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
       this.setState({ address: queryString.parse(location.search).address });
-      this.fetchDataApi(queryString.parse(location.search).address);
+      this.fetchData(queryString.parse(location.search).address);
     });
-    this.fetchDataApi(this.state.address);
+    this.fetchData(this.state.address);
   }
 
-  fetchDataApi(address) {
+  fetchData(address) {
     fetch(`https://mempool.space/api/address/${address}`)
       .then(res => res.json())
       .then(data => {
