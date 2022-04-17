@@ -49,6 +49,10 @@ export default class Results extends React.Component {
     this.fetchData(this.state.address);
   }
 
+  componentWillUnmount() {
+    this.unlisten();
+  }
+
   fetchData(address) {
     fetch(`https://mempool.space/api/address/${address}`)
       .then(res => res.json())
