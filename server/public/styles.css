@@ -49,3 +49,40 @@
 .nav-input {
   width: 275px;
 }
+
+.padding-zero {
+  padding: 0;
+}
+
+.address-header {
+  font-size: 16px;
+  font-weight: 850;
+}
+
+.grey-background {
+  background-color: #f0f0f0;
+}
+
+.font-size-20 {
+  font-size: 20px;
+}
+
+.font-size-32 {
+  font-size: 32px;
+}
+
+.font-underline {
+  text-decoration: underline;
+}
+
+.margin-left-2 {
+  margin-left: 2rem;
+}
+
+.margin-right-1 {
+  margin-right: 1rem;
+}
+
+.margin-left-1 {
+  margin-left: 1rem;
+}

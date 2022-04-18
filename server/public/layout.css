@@ -6,4 +6,8 @@
   .nav-input {
     width: 265px;
   }
+
+  .address-header {
+    font-size: 32px;
+  }
 }
