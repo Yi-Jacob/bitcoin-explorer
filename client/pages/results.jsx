@@ -2,6 +2,7 @@ import React from 'react';
 import queryString from 'query-string';
 import Nav from '../components/navbar';
 import Card from 'react-bootstrap/Card';
+// import QrCode from '../components/qr';
 
 export default class Results extends React.Component {
   constructor(props) {
@@ -9,6 +10,7 @@ export default class Results extends React.Component {
     this.state = ({
       address: queryString.parse(this.props.location.search).address,
       input: '',
+      imgSrc: '',
       walletData: {
         chain_stats: {
           tx_count: 0,
@@ -64,6 +66,10 @@ export default class Results extends React.Component {
       .then(data => {
         this.setState({ transactionData: data });
       });
+    fetch(`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&color=1&prefix=on&address=${address}`, { mode: 'no-cors' })
+      .then(data => {
+        this.setState({ imgSrc: data });
+      });
   }
 
   handleSubmit(event) {
@@ -89,6 +95,7 @@ export default class Results extends React.Component {
             <Card className='orange-border font-titillium-web px-4 py-4 grey-background font-size-32'>
               <Card.Title>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
               <Card.Title>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
+              {/* <img src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&color=1&prefix=on&address=${this.state.input}`} height="150" width="150" alt="Bitcoin QR Code" /> */}
             </Card>
           </div>
           <div className="row my-4 margin-left-2 margin-right-1 px-0 justify-content-center grey-background">
