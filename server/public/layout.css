@@ -14,4 +14,9 @@
   .info-text {
     font-size: 42px;
   }
+
+  .bookmark-btn {
+    font-size: 32px;
+    margin-left: 0.5rem;
+  }
 }

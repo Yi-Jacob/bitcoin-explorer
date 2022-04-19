@@ -39,6 +39,7 @@ export default class Results extends React.Component {
     });
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -75,14 +76,45 @@ export default class Results extends React.Component {
     this.setState({ input: event.target.value });
   }
 
+  // handleClick(event) {
+  //   console.log('test');
+  //   const { action } = this.props;
+  //   const req = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(this.state)
+  //   };
+  // }
+  // fetch('http://localhost:3001/api/bookmarks`', req)
+  //   .then(res => res.json())
+  handleClick(event) {
+    // console.log('here');
+    const baseURL = 'http://localhost:3001/api';
+
+    fetch(`${baseURL}/bookmarks`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.state)
+    });
+  }
+
   render() {
     return (
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
         <div className="container-fluid">
-          <div className="row my-4 margin-left-14 margin-right-1">
+          <div className="row my-4 margin-right-10 margin-left-6">
             <div className='col-sm-9 col-md-11'>
-              <p className='address-header font-titillium-web font-underline'>Search Address: {this.state.walletData.address}</p>
+              <p className='address-header font-titillium-web font-underline'>
+                Search Address: {this.state.walletData.address}
+                <button className='bookmark-btn' onClick={this.handleClick}>
+                  <i className="fa-solid fa-star"></i>
+                </button>
+              </p>
             </div>
           </div>
           <div className="row my-4 margin-left-1 margin-right-1">
