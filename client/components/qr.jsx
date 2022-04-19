@@ -1,5 +1,6 @@
-import React from 'react';
 
+import React from 'react';
+import QRCode from 'react-qr-code';
 export default class QrCode extends React.Component {
   constructor(props) {
     super(props);
@@ -10,7 +11,8 @@ export default class QrCode extends React.Component {
 
   render() {
     return (
-      <img src={'https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&amp;address=' + this.state.input} alt="Bitcoin QR Code Generator" height="150" width="150" border="0" />
+        <QRCode value={this.state.input} />
     );
   }
+
 }
