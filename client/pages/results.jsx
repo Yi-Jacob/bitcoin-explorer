@@ -81,18 +81,25 @@ export default class Results extends React.Component {
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
         <div className="container-fluid">
+          <div className="row my-4 margin-left-14 margin-right-1">
+            <div className='col-sm-9 col-md-11'>
+              <p className='address-header font-titillium-web font-underline'>Search Address: {this.state.walletData.address}</p>
+            </div>
+          </div>
           <div className="row my-4 margin-left-1 margin-right-1">
-            <Card className='orange-border font-titillium-web px-4 py-4 grey-background font-size-32 justify-content-between'>
-              <Card.Title>
-                Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC
-                Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}
-              </Card.Title>
-              <Card.Title>
-                <img src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${this.state.address}`} alt="bitcoin QR code generator" height="150" width="150" className='' />
-              </Card.Title>
+            <Card className='mb-3 orange-border font-titillium-web px-4 py-4 grey-background'>
+              <div className="row">
+                <div className="col-md-3 col-sm-10 px-1 justify-content-center margin-left-14">
+                  <img className='black-border' src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${this.state.address}`} alt="bitcoin QR code generator" height="250" width="275" />
+                </div>
+                <div className="col-md-7 col-sm-10 margin-left-1 px-0 justify-content-start align-self-center">
+                  <Card.Title className='info-text'>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
+                  <Card.Title className='info-text'>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
+                </div>
+              </div>
             </Card>
           </div>
-          <div className="row my-4 margin-left-2 margin-right-1 px-0 justify-content-center grey-background">
+          <div className="row my-4 margin-left-1 margin-right-1 px-0 justify-content-center grey-background">
             <Card className='orange-border padding-zero grey-background font-size-20'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>

@@ -67,8 +67,8 @@
   font-size: 20px;
 }
 
-.font-size-32 {
-  font-size: 32px;
+.info-text {
+  font-size: 28px;
 }
 
 .font-underline {
@@ -87,19 +87,15 @@
   margin-left: 1rem;
 }
 
-.left-container {
-  background-color: darkgray;
-  display: flex;
-  align-items: center;
-  height: 200px;
-  width: 50%;
+.qr-position {
+  margin-left: auto;
+  margin-right: 10%;
 }
 
-.right-container {
-  background-color: lightgray;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 200px;
-  width: 50%;
+.margin-left-14 {
+  margin-left: 14px;
+}
+
+.black-border {
+  border: black 1px solid;
 }
