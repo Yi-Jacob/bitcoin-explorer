@@ -2,7 +2,6 @@ import React from 'react';
 import queryString from 'query-string';
 import Nav from '../components/navbar';
 import Card from 'react-bootstrap/Card';
-// import QRCode from 'react-qr-code';
 
 export default class Results extends React.Component {
   constructor(props) {
