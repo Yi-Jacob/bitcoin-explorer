@@ -86,3 +86,20 @@
 .margin-left-1 {
   margin-left: 1rem;
 }
+
+.left-container {
+  background-color: darkgray;
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 50%;
+}
+
+.right-container {
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 50%;
+}
