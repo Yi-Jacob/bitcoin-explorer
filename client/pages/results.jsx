@@ -91,10 +91,11 @@ export default class Results extends React.Component {
   //   .then(res => res.json())
   handleClick(event) {
     // console.log('here');
-    const baseURL = 'http://localhost:3001/api';
+    // const baseURL = 'http://localhost:3001/api';
 
-    fetch(`${baseURL}/bookmarks`, {
+    fetch('api/bookmarks', {
       method: 'post',
+      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json'
       },

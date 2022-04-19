@@ -13,11 +13,22 @@ app.use(expressJson);
 app.use(staticMiddleware);
 app.use(errorMiddleware);
 
+// CORS middleware
+const allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  next();
+};
+
+app.use(allowCrossDomain);
+
 const db = new pg.Pool({
-  connectionString: 'postgres://dev:dev@localhost/finalProject',
-  ssl: {
+  connectionString: process.env.DATABASE_URL
+  /* ssl: {
     rejectUnauthorized: false
-  }
+  } */
 });
 
 app.get('/api/bookmarks', (req, res) => {
@@ -48,7 +59,7 @@ app.post('/api/bookmarks', (req, res, next) => {
   const bookmark = [bookmarkId, userId, walletAddress, data, bookmarkedAt];
   if ((!walletAddress) || (!data)) {
     res.status(400).json({
-      error: 'Please include both fields'
+      error: 'Please include all fields'
     });
     return;
   }
