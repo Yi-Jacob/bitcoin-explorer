@@ -99,7 +99,7 @@ export default class Results extends React.Component {
     return (
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ maxWidth: '1200px' }}>
           <div className="row my-4 margin-right-10 margin-left-6">
             <div className='col-sm-9 col-md-11'>
               <p className='address-header font-titillium-web font-underline'>
@@ -124,7 +124,7 @@ export default class Results extends React.Component {
             </Card>
           </div>
           <div className="row my-4 margin-left-1 margin-right-1 px-0 justify-content-center">
-            <Card className='orange-border padding-zero font-size-20 grey-background'>
+            <Card className='orange-border padding-zero font-size-20 grey-background px-2'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 5 Transactions</Card.Header>
               <ul className='px-4 py-2'>
                 {this.state.transactionData.slice(0, 5).map((transactionData, i) => {

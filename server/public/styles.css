@@ -131,3 +131,11 @@
 .nav-bookmark-btn:hover {
   color: white;
 }
+
+.margin-right-2 {
+  margin-right: 2rem;
+}
+
+.bookmark-header {
+  font-size: 20px;
+}
