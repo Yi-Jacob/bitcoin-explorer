@@ -77,17 +77,45 @@ export default class Results extends React.Component {
   }
 
   handleClick(event) {
-    const req = {
+    // const searchData = {
+    //   bookmarkId: 5,
+    //   userId: 1,
+    //   walletAddress: this.state.address,
+    //   data: this.state.walletData,
+    //   bookmarkedAt: '2019-04-01T06:00:01.000Z'
+    // };
+    // console.log(searchData);
+    // const req = {
+    //   method: 'POST',
+    //   mode: 'no-cors',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(searchData)
+    // };
+    // const response = fetch('api/bookmarks/', req)
+    //   .then(res => res.json());
+    // console.log(response);
+    const baseURL = 'http://localhost:3001/api';
+    const postData = {
+      bookmarkId: 5,
+      userId: 1,
+      walletAddress: '39Sj48rfraMDgitCki3XT9Hv5Sp2aTXgcy',
+      data: {
+        chain_stats: {
+          tx_count: 0,
+          funded_txo_sum: 0,
+          spent_txo_sum: 0
+        }
+      },
+      bookmarkedAt: '2019-04-01T06:00:01.000Z'
+    };
+    fetch(`${baseURL}/bookmarks`, {
       method: 'post',
-      mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(this.state)
-    };
-    fetch('api/bookmarks', req)
-      .then(res => res.json())
-    ;
+      body: JSON.stringify(postData)
+    });
+    // console.log(test);
   }
 
   render() {
