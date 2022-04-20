@@ -34,7 +34,7 @@ export default class Home extends React.Component {
     return (
       <>
         <Nav history={this.props.history} onClick={this.handleClick} />
-        <div className="container">
+        <div className="container" style={{ maxWidth: '1200px' }}>
           <div className="row orange my-4">
             <div className="col-sm-12">
               <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Exlorer</h1>
