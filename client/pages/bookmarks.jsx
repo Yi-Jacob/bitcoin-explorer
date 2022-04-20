@@ -1,18 +1,25 @@
 import React from 'react';
 import Nav from '../components/navbar';
-
+import Card from 'react-bootstrap/Card';
 export default class Bookmarks extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      bookmarkData: {
-        chain_stats: {
-          tx_count: 0,
-          funded_txo_sum: 0,
-          spent_txo_sum: 0
+      bookmarkData: [{
+        bookmarkId: 0,
+        walletAddress: '',
+        data: {
+          chain_stats: {
+            tx_count: '',
+            funded_txo_sum: 0,
+            spent_txo_sum: 0
+          }
         }
+
       }
-    });
+      ]
+    }
+    );
   }
 
   componentDidMount() {
@@ -37,7 +44,33 @@ export default class Bookmarks extends React.Component {
     return (
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
-        <h1>Please show</h1>
+        <div className="container-fluid">
+          <div className="row my-2 margin-right-10 margin-left-1">
+            <div className='col-sm-9 col-md-11'>
+              <p className='address-header font-titillium-web'>
+                <i className="fa-brands fa-btc" />ookmarks
+              </p>
+            </div>
+          </div>
+          <div className="row my-2 margin-right-10 margin-left-1">
+            {this.state.bookmarkData.map((bookmarkData, i) => {
+              return (
+                <Card key={i} className='orange-border font-titillium-web my-2'>
+                  <Card.Header className='font-titillium-web font-bold'>Bookmarked Address: {this.state.bookmarkData[i].walletAddress}</Card.Header>
+                  <ul>
+                    <li>
+                      <Card.Title className=''>Total Number of Transactions: {this.state.bookmarkData[i].data.chain_stats.tx_count}</Card.Title>
+                    </li>
+                    <li>
+                      <Card.Title className=''>Total Balance: {(this.state.bookmarkData[i].data.chain_stats.funded_txo_sum - this.state.bookmarkData[i].data.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
+                    </li>
+                  </ul>
+                </Card>
+              );
+            })}
+          </div>
+
+        </div>
       </>
     );
 

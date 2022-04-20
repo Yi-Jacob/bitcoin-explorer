@@ -25,7 +25,6 @@ class Nav extends React.Component {
   }
 
   handleClick(event) {
-    // console.log('test');
     this.props.history.push('/bookmarks');
   }
 

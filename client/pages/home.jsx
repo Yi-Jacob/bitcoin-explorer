@@ -27,7 +27,6 @@ export default class Home extends React.Component {
   }
 
   handleClick(event) {
-    // console.log('test');
     this.props.history.push('/bookmarks');
   }
 
