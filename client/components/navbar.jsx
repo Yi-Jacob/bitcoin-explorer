@@ -18,6 +18,9 @@ class Nav extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.history.push('/search-results?address=' + this.state.input);
+    this.setState({
+      input: ''
+    });
   }
 
   render() {

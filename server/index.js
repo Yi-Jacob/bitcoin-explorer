@@ -5,19 +5,14 @@ const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
 const ClientError = require('./client-error');
-
 const expressJson = express.json();
 
 app.use(expressJson);
-
 app.use(staticMiddleware);
 app.use(errorMiddleware);
 
 const db = new pg.Pool({
-  connectionString: 'postgres://dev:dev@localhost/finalProject',
-  ssl: {
-    rejectUnauthorized: false
-  }
+  connectionString: process.env.DATABASE_URL
 });
 
 app.get('/api/bookmarks', (req, res) => {
@@ -39,13 +34,13 @@ app.get('/api/bookmarks', (req, res) => {
 });
 
 app.post('/api/bookmarks', (req, res, next) => {
-  const { bookmarkId, userId, walletAddress, data, bookmarkedAt } = req.body;
+  const { userId, walletAddress, data, bookmarkedAt } = req.body;
   const sql = `
-  insert into "bookmarks" ("bookmarkId", "userId", "walletAddress", "data", "bookmarkedAt")
-  values ($1, $2, $3, $4, $5)
+  insert into "bookmarks" ("userId", "walletAddress", "data", "bookmarkedAt")
+  values ($1, $2, $3, $4)
   returning *
   `;
-  const bookmark = [bookmarkId, userId, walletAddress, data, bookmarkedAt];
+  const bookmark = [userId, walletAddress, data, bookmarkedAt];
   if ((!walletAddress) || (!data)) {
     res.status(400).json({
       error: 'Please include both fields'
@@ -53,8 +48,8 @@ app.post('/api/bookmarks', (req, res, next) => {
     return;
   }
   db.query(sql, bookmark)
-    .then(res => {
-      const newBookmark = res.rows[0];
+    .then(result => {
+      const newBookmark = result.rows[0];
       res.status(201).json(newBookmark);
     })
     .catch(error => {
