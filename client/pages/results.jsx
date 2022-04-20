@@ -91,8 +91,8 @@ export default class Results extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
-    })
-      .then(this.setState({ star: true }));
+    });
+    this.setState({ star: true });
   }
 
   render() {
@@ -128,7 +128,7 @@ export default class Results extends React.Component {
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>
                 {this.state.transactionData.slice(0, 3).map((transactionData, i) => {
-                  return ([
+                  return (
                     <li key={i}>
                       <Card.Title>Transaction ID: {transactionData.txid}</Card.Title>
                       <ul>
@@ -137,7 +137,7 @@ export default class Results extends React.Component {
                         </li>
                       </ul>
                     </li>
-                  ]);
+                  );
                 })}
               </ul>
             </Card>
