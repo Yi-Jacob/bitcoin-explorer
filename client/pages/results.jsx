@@ -91,7 +91,8 @@ export default class Results extends React.Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
-    });
+    })
+      .then(this.setState({ star: true }));
   }
 
   render() {
@@ -104,7 +105,7 @@ export default class Results extends React.Component {
               <p className='address-header font-titillium-web font-underline'>
                 Search Address: {this.state.walletData.address}
                 <button className='bookmark-btn' onClick={this.handleClick}>
-                  <i className="fa-regular fa-star"></i>
+                  <i className={this.state.star ? 'fa-solid fa-star' : 'fa-regular fa-star'}></i>
                 </button>
               </p>
             </div>
@@ -126,30 +127,22 @@ export default class Results extends React.Component {
             <Card className='orange-border padding-zero font-size-20 grey-background'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>
-                <li>
-                  <Card.Title>Transaction ID: {this.state.transactionData[0].txid}</Card.Title>
-                  <ul>
-                    <li>
-                      <Card.Title>Block Height: {this.state.transactionData[0].status.block_height}</Card.Title>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <Card.Title>Transaction ID: {this.state.transactionData[1].txid}</Card.Title>
-                  <ul>
-                    <li>
-                      <Card.Title>Block Height: {this.state.transactionData[1].status.block_height}</Card.Title>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <Card.Title>Transaction ID: {this.state.transactionData[2].txid}</Card.Title>
-                  <ul>
-                    <li>
-                      <Card.Title>Block Height: {this.state.transactionData[2].status.block_height}</Card.Title>
-                    </li>
-                  </ul>
-                </li>
+                {this.state.transactionData.map((txData, i) => {
+                  if (i < 3) {
+                    return ([
+                      <li key={i}>
+                        <Card.Title>Transaction ID: {txData.txid}</Card.Title>
+                        <ul>
+                          <li>
+                            <Card.Title>Block Height: {txData.status.block_height}</Card.Title>
+                          </li>
+                        </ul>
+                      </li>
+                    ]);
+                  } else {
+                    return ([]);
+                  }
+                })}
               </ul>
             </Card>
           </div>
