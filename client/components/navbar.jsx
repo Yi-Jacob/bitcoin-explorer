@@ -9,6 +9,7 @@ class Nav extends React.Component {
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -23,14 +24,22 @@ class Nav extends React.Component {
     });
   }
 
+  handleClick(event) {
+    // console.log('test');
+    this.props.history.push('/bookmarks');
+  }
+
   render() {
     return (
       <>
         <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
-          <div className="container-fluid">
+          <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font'>
               <div className="orange font-raleway">
-                <i className="fa-brands fa-btc orange" />itcoin Exlorer
+                <i className="fa-brands fa-btc" />itcoin Exlorer
+                <button className='margin-left-6 orange nav-bookmark-btn' href='/bookmarks' onClick={this.handleClick}>
+                  <i className='fa-solid fa-star'></i>
+                </button>
               </div>
             </Navbar.Brand>
 

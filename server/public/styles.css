@@ -119,3 +119,7 @@
 .bookmark-btn:hover {
   color: #f6781e;
 }
+
+.nav-bookmark-btn:hover {
+  color: white;
+}
