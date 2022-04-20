@@ -59,13 +59,13 @@ app.post('/api/bookmarks', (req, res, next) => {
   const bookmark = [bookmarkId, userId, walletAddress, data, bookmarkedAt];
   if ((!walletAddress) || (!data)) {
     res.status(400).json({
-      error: 'Please include all fields'
+      error: 'Please include both fields'
     });
     return;
   }
   db.query(sql, bookmark)
-    .then(res => {
-      const newBookmark = res.rows[0];
+    .then(result => {
+      const newBookmark = result.rows[0];
       res.status(201).json(newBookmark);
     })
     .catch(error => {

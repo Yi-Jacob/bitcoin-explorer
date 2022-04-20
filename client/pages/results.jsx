@@ -76,31 +76,18 @@ export default class Results extends React.Component {
     this.setState({ input: event.target.value });
   }
 
-  // handleClick(event) {
-  //   console.log('test');
-  //   const { action } = this.props;
-  //   const req = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(this.state)
-  //   };
-  // }
-  // fetch('http://localhost:3001/api/bookmarks`', req)
-  //   .then(res => res.json())
   handleClick(event) {
-    // console.log('here');
-    // const baseURL = 'http://localhost:3001/api';
-
-    fetch('api/bookmarks', {
+    const req = {
       method: 'post',
       mode: 'no-cors',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
-    });
+    };
+    fetch('api/bookmarks', req)
+      .then(res => res.json())
+    ;
   }
 
   render() {
