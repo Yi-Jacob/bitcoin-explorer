@@ -44,7 +44,7 @@ export default class Results extends React.Component {
 
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
-      this.setState({ address: queryString.parse(location.search).address });
+      this.setState({ star: false, address: queryString.parse(location.search).address });
       this.fetchData(queryString.parse(location.search).address);
     });
     this.fetchData(this.state.address);
@@ -85,7 +85,7 @@ export default class Results extends React.Component {
       data: this.state.walletData,
       bookmarkedAt: timeStamp
     };
-    fetch('http://localhost:3001/api/bookmarks', {
+    fetch('/api/bookmarks', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
@@ -127,21 +127,17 @@ export default class Results extends React.Component {
             <Card className='orange-border padding-zero font-size-20 grey-background'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
               <ul className='px-4 py-2'>
-                {this.state.transactionData.map((txData, i) => {
-                  if (i < 3) {
-                    return ([
-                      <li key={i}>
-                        <Card.Title>Transaction ID: {txData.txid}</Card.Title>
-                        <ul>
-                          <li>
-                            <Card.Title>Block Height: {txData.status.block_height}</Card.Title>
-                          </li>
-                        </ul>
-                      </li>
-                    ]);
-                  } else {
-                    return ([]);
-                  }
+                {this.state.transactionData.slice(0, 3).map((transactionData, i) => {
+                  return ([
+                    <li key={i}>
+                      <Card.Title>Transaction ID: {transactionData.txid}</Card.Title>
+                      <ul>
+                        <li>
+                          <Card.Title>Block Height: {transactionData.status.block_height}</Card.Title>
+                        </li>
+                      </ul>
+                    </li>
+                  ]);
                 })}
               </ul>
             </Card>

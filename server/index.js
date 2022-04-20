@@ -5,30 +5,14 @@ const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
 const ClientError = require('./client-error');
-
 const expressJson = express.json();
 
 app.use(expressJson);
-
 app.use(staticMiddleware);
 app.use(errorMiddleware);
 
-// CORS middleware
-const allowCrossDomain = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type');
-
-  next();
-};
-
-app.use(allowCrossDomain);
-
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL
-  /* ssl: {
-    rejectUnauthorized: false
-  } */
 });
 
 app.get('/api/bookmarks', (req, res) => {
