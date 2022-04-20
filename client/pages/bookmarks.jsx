@@ -1,10 +1,10 @@
 import React from 'react';
-import queryString from 'query-string';
+import Nav from '../components/navbar';
+
 export default class Bookmarks extends React.Component {
   constructor(props) {
     super(props);
-    this.state({
-      address: queryString.parse(this.props.location.search).address,
+    this.state = ({
       bookmarkData: {
         chain_stats: {
           tx_count: 0,
@@ -19,8 +19,9 @@ export default class Bookmarks extends React.Component {
     fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
+        this.setState({ bookmarkData: data });
       });
+
   }
 
   handleSubmit(event) {
@@ -35,7 +36,8 @@ export default class Bookmarks extends React.Component {
   render() {
     return (
       <>
-        <h1>test</h1>
+        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
+        <h1>Please show</h1>
       </>
     );
 

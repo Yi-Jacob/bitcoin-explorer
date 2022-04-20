@@ -19,4 +19,8 @@
     font-size: 32px;
     margin-left: 0.5rem;
   }
+
+  .nav-bookmark-btn {
+    top: 11px;
+  }
 }

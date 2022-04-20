@@ -31,6 +31,7 @@ module.exports = {
   devtool: 'source-map',
   devServer: {
     host: '0.0.0.0',
+    historyApiFallback: true,
     port: process.env.DEV_SERVER_PORT,
     static: {
       directory: serverPublicPath,

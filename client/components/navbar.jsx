@@ -37,11 +37,13 @@ class Nav extends React.Component {
             <Navbar.Brand href="/" className='orange nav-font'>
               <div className="orange font-raleway">
                 <i className="fa-brands fa-btc" />itcoin Exlorer
-                <button className='margin-left-6 orange nav-bookmark-btn' href='/bookmarks' onClick={this.handleClick}>
-                  <i className='fa-solid fa-star'></i>
-                </button>
               </div>
             </Navbar.Brand>
+            <button className='nav-bookmark-btn nav-font' href='/bookmarks' onClick={this.handleClick}>
+              <a href='/bookmarks'>
+                <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
+              </a>
+            </button>
 
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
