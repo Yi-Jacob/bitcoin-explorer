@@ -77,45 +77,21 @@ export default class Results extends React.Component {
   }
 
   handleClick(event) {
-    // const searchData = {
-    //   bookmarkId: 5,
-    //   userId: 1,
-    //   walletAddress: this.state.address,
-    //   data: this.state.walletData,
-    //   bookmarkedAt: '2019-04-01T06:00:01.000Z'
-    // };
-    // console.log(searchData);
-    // const req = {
-    //   method: 'POST',
-    //   mode: 'no-cors',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(searchData)
-    // };
-    // const response = fetch('api/bookmarks/', req)
-    //   .then(res => res.json());
-    // console.log(response);
-    const baseURL = 'http://localhost:3001/api';
+    event.preventDefault();
+    const timeStamp = new Date().toLocaleString();
     const postData = {
-      bookmarkId: 5,
       userId: 1,
-      walletAddress: '39Sj48rfraMDgitCki3XT9Hv5Sp2aTXgcy',
-      data: {
-        chain_stats: {
-          tx_count: 0,
-          funded_txo_sum: 0,
-          spent_txo_sum: 0
-        }
-      },
-      bookmarkedAt: '2019-04-01T06:00:01.000Z'
+      walletAddress: this.state.address,
+      data: this.state.walletData,
+      bookmarkedAt: timeStamp
     };
-    fetch(`${baseURL}/bookmarks`, {
+    fetch('http://localhost:3001/api/bookmarks', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(postData)
     });
-    // console.log(test);
   }
 
   render() {
@@ -128,7 +104,7 @@ export default class Results extends React.Component {
               <p className='address-header font-titillium-web font-underline'>
                 Search Address: {this.state.walletData.address}
                 <button className='bookmark-btn' onClick={this.handleClick}>
-                  <i className="fa-solid fa-star"></i>
+                  <i className="fa-regular fa-star"></i>
                 </button>
               </p>
             </div>

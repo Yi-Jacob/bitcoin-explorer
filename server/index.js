@@ -50,13 +50,13 @@ app.get('/api/bookmarks', (req, res) => {
 });
 
 app.post('/api/bookmarks', (req, res, next) => {
-  const { bookmarkId, userId, walletAddress, data, bookmarkedAt } = req.body;
+  const { userId, walletAddress, data, bookmarkedAt } = req.body;
   const sql = `
-  insert into "bookmarks" ("bookmarkId", "userId", "walletAddress", "data", "bookmarkedAt")
-  values ($1, $2, $3, $4, $5)
+  insert into "bookmarks" ("userId", "walletAddress", "data", "bookmarkedAt")
+  values ($1, $2, $3, $4)
   returning *
   `;
-  const bookmark = [bookmarkId, userId, walletAddress, data, bookmarkedAt];
+  const bookmark = [userId, walletAddress, data, bookmarkedAt];
   if ((!walletAddress) || (!data)) {
     res.status(400).json({
       error: 'Please include both fields'
