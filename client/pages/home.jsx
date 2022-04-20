@@ -56,7 +56,7 @@ export default class Home extends React.Component {
                     </div>
                     <div className="row my-4 px-2 justify-content-center">
                         <div className="col-sm-10">
-                            <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)” -Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
+                            <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)” Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
                         </div>
                     </div>
                 </div>
