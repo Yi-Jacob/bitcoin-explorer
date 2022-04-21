@@ -7,7 +7,7 @@ export default class Bookmarks extends React.Component {
     super(props);
     this.state = ({
       bookmarkData: [{
-        bookmarkId: null,
+        bookmarkId: 0,
         bookmarkedAt: '',
         walletAddress: '',
         data: {
