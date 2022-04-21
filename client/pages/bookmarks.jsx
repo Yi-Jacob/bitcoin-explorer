@@ -21,13 +21,13 @@ export default class Bookmarks extends React.Component {
       ]
     }
     );
+    this.removeBookmark = this.removeBookmark.bind(this);
   }
 
   componentDidMount() {
     fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
-
         this.setState({ bookmarkData: data });
       });
 
@@ -42,10 +42,17 @@ export default class Bookmarks extends React.Component {
     this.setState({ input: event.target.value });
   }
 
+  removeBookmark(bookmarkId) {
+    fetch(`/api/bookmarks/${bookmarkId}`, {
+      method: 'delete'
+    });
+    this.setState(prevState => ({
+      bookmarkData: prevState.bookmarkData.filter(bookmark => bookmark.bookmarkId !== bookmarkId)
+    }));
+  }
+
   render() {
-
     return (
-
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
         <div className="container-fluid" style={{ maxWidth: '1200px' }}>
@@ -62,7 +69,10 @@ export default class Bookmarks extends React.Component {
                   this.state.bookmarkData.map((bookmarkData, i) => {
                     return (
                   <Card key={i} className='orange-border padding-zero font-size-20 grey-background mb-3'>
-                    <Card.Header className='font-titillium-web font-bold address-header'>Bookmarked Address: {bookmarkData.walletAddress}</Card.Header>
+                      <Card.Header className='font-titillium-web font-bold address-header'>
+                        Bookmarked Address: {bookmarkData.walletAddress}
+                        <button className='remove-btn pt-1' onClick={this.removeBookmark.bind(this, bookmarkData.bookmarkId)}><i className="fa-solid fa-circle-minus orange"></i></button>
+                      </Card.Header>
                     <ul>
                       <li>
                         <Card.Title className='bookmark-header'>Total Number of Transactions: {bookmarkData.data.chain_stats.tx_count}</Card.Title>
