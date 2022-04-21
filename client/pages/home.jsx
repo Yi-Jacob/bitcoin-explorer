@@ -4,13 +4,30 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Nav from '../components/navbar';
+import Card from 'react-bootstrap/Card';
 
 export default class Home extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = ({
-      input: ''
+      input: '',
+      difficulty: {
+        difficultyChange: null,
+        remainingBlocks: null,
+        progressPercent: null
+      },
+      fees: {
+        fastestFee: null,
+        hourFee: null,
+        minimumFee: null
+      },
+      blocks: [
+        {
+          height: null,
+          tx_count: null
+        }
+      ]
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,6 +43,24 @@ export default class Home extends React.Component {
     this.setState({
       input: ''
     });
+  }
+
+  componentDidMount() {
+    fetch('https://mempool.space/api/v1/difficulty-adjustment')
+      .then(res => res.json())
+      .then(data => {
+
+      });
+    fetch('https://mempool.space/api/v1/fees/recommended')
+      .then(res => res.json())
+      .then(data => {
+
+      });
+    fetch('https://mempool.space/api/blocks/')
+      .then(res => res.json())
+      .then(data => {
+
+      });
   }
 
   render() {
@@ -57,6 +92,29 @@ export default class Home extends React.Component {
                 </Button>
               </InputGroup>
             </Form>
+          </div>
+          <div className="row justify-content-center">
+            <div className="col-md-3">
+              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+                <Card.Header className='font-titillium-web font-bold address-header'>Difficulty Adjustment</Card.Header>
+                <Card.Title className='bookmark-header'></Card.Title>
+                <Card.Title className='bookmark-header'></Card.Title>
+              </Card>
+            </div>
+            <div className="col-md-3">
+              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+                <Card.Header className='font-titillium-web font-bold address-header'>Current Fees</Card.Header>
+                <Card.Title className='bookmark-header'></Card.Title>
+                <Card.Title className='bookmark-header'></Card.Title>
+              </Card>
+            </div>
+            <div className="col-md-3">
+              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+                <Card.Header className='font-titillium-web font-bold address-header'>Latest Blocks</Card.Header>
+                <Card.Title className='bookmark-header'></Card.Title>
+                <Card.Title className='bookmark-header'></Card.Title>
+              </Card>
+            </div>
           </div>
           <div className="row my-4 px-2 justify-content-center">
             <div className="col-sm-10">
