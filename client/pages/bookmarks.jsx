@@ -1,12 +1,14 @@
 import React from 'react';
 import Nav from '../components/navbar';
 import Card from 'react-bootstrap/Card';
+
 export default class Bookmarks extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
       bookmarkData: [{
         bookmarkId: 0,
+        bookmarkedAt: '',
         walletAddress: '',
         data: {
           chain_stats: {
@@ -25,6 +27,7 @@ export default class Bookmarks extends React.Component {
     fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
+
         this.setState({ bookmarkData: data });
       });
 
@@ -40,7 +43,9 @@ export default class Bookmarks extends React.Component {
   }
 
   render() {
+
     return (
+
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
         <div className="container-fluid" style={{ maxWidth: '1200px' }}>
