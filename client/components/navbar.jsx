@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
 
-class Nav extends React.Component {
+export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
@@ -60,5 +60,3 @@ class Nav extends React.Component {
     );
   }
 }
-
-export default Nav;
