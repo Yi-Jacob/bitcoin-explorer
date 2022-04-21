@@ -7,7 +7,7 @@ export default class Bookmarks extends React.Component {
     super(props);
     this.state = ({
       bookmarkData: [{
-        bookmarkId: 0,
+        bookmarkId: null,
         bookmarkedAt: '',
         walletAddress: '',
         data: {
@@ -21,13 +21,13 @@ export default class Bookmarks extends React.Component {
       ]
     }
     );
+    this.removeBookmark = this.removeBookmark.bind(this);
   }
 
   componentDidMount() {
     fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
-
         this.setState({ bookmarkData: data });
       });
 
@@ -42,17 +42,13 @@ export default class Bookmarks extends React.Component {
     this.setState({ input: event.target.value });
   }
 
-  // deleteRow(bookmarkId) {
-  //   fetch(`/api/bookmark/${bookmarkId}`, {
-  //     method: 'delete'
-  //   });
-  //   this.setState(prevState => ({
-  //     bookmarkData: prevState.bookmarkData.filter(row => row.bookmarkId !== bookmarkId)
-  //   }));
-  // }
-
-  removeBookmark(event) {
-    // console.log('test');
+  removeBookmark(bookmarkId) {
+    fetch(`/api/bookmarks/${bookmarkId}`, {
+      method: 'delete'
+    });
+    this.setState(prevState => ({
+      bookmarkData: prevState.bookmarkData.filter(row => row.bookmarkId !== bookmarkId)
+    }));
   }
 
   render() {
@@ -75,7 +71,7 @@ export default class Bookmarks extends React.Component {
                   <Card key={i} className='orange-border padding-zero font-size-20 grey-background mb-3'>
                       <Card.Header className='font-titillium-web font-bold address-header'>
                         Bookmarked Address: {bookmarkData.walletAddress}
-                        <button className='remove-btn pt-1' onClick={this.removeBookmark}><i className="fa-solid fa-circle-minus orange"></i></button>
+                        <button className='remove-btn pt-1' onClick={this.removeBookmark.bind(this, bookmarkData.bookmarkId)}><i className="fa-solid fa-circle-minus orange"></i></button>
                       </Card.Header>
                     <ul>
                       <li>
