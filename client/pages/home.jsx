@@ -25,7 +25,7 @@ export default class Home extends React.Component {
       blocks: [
         {
           height: null,
-          tx_count: null
+          tx_count: 0
         }
       ]
     });
@@ -49,17 +49,17 @@ export default class Home extends React.Component {
     fetch('https://mempool.space/api/v1/difficulty-adjustment')
       .then(res => res.json())
       .then(data => {
-
+        this.setState({ difficulty: data });
       });
     fetch('https://mempool.space/api/v1/fees/recommended')
       .then(res => res.json())
       .then(data => {
-
+        this.setState({ fees: data });
       });
     fetch('https://mempool.space/api/blocks/')
       .then(res => res.json())
       .then(data => {
-
+        this.setState({ blocks: data });
       });
   }
 
@@ -95,24 +95,39 @@ export default class Home extends React.Component {
           </div>
           <div className="row justify-content-center">
             <div className="col-md-3">
-              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+              <Card className='orange-border padding-zero grey-background mb-3'>
                 <Card.Header className='font-titillium-web font-bold address-header'>Difficulty Adjustment</Card.Header>
-                <Card.Title className='bookmark-header'></Card.Title>
-                <Card.Title className='bookmark-header'></Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.difficulty.difficultyChange}</Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.difficulty.progressPercent}</Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.difficulty.remainingBlocks}</Card.Title>
               </Card>
             </div>
             <div className="col-md-3">
-              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+              <Card className='orange-border padding-zero  grey-background mb-3'>
                 <Card.Header className='font-titillium-web font-bold address-header'>Current Fees</Card.Header>
-                <Card.Title className='bookmark-header'></Card.Title>
-                <Card.Title className='bookmark-header'></Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.fees.fastestFee}</Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.fees.hourFee}</Card.Title>
+                <Card.Title className='bookmark-header'>{this.state.fees.minimumFee}</Card.Title>
               </Card>
             </div>
             <div className="col-md-3">
-              <Card className='orange-border padding-zero font-size-20 grey-background mb-3'>
+              <Card className='orange-border padding-zero grey-background mb-3'>
                 <Card.Header className='font-titillium-web font-bold address-header'>Latest Blocks</Card.Header>
-                <Card.Title className='bookmark-header'></Card.Title>
-                <Card.Title className='bookmark-header'></Card.Title>
+                <ul>
+                  {this.state.blocks.slice(0, 3).map((block, i) => {
+                    return (
+                      <div key={i}>
+                        <li key={i}>
+                          <Card.Title className='bookmark-header'>{this.state.blocks[i].height}</Card.Title>
+                        </li>
+                        <li>
+                          <Card.Title className='bookmark-header'>{this.state.blocks[i].tx_count}</Card.Title>
+                        </li>
+                      </div>
+                    );
+                  }
+                  )}
+                </ul>
               </Card>
             </div>
           </div>
