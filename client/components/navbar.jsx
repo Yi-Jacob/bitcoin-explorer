@@ -10,7 +10,6 @@ export default class Nav extends React.Component {
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -23,10 +22,6 @@ export default class Nav extends React.Component {
     this.setState({
       input: ''
     });
-  }
-
-  handleClick(event) {
-    this.props.history.push('/bookmarks');
   }
 
   render() {
