@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
 export default class Nav extends React.Component {
   constructor(props) {
@@ -38,21 +39,19 @@ export default class Nav extends React.Component {
                 <i className="fa-brands fa-btc" />itcoin Exlorer
               </div>
             </Navbar.Brand>
-            <button className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
-              <a href='/bookmarks'>
-                <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
-              </a>
-            </button>
+            <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
+              <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
+            </NavLink>
 
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
                   placeholder="Search for Wallet Address"
                   className="me-3 nav-input"
-                  onChange={this.handleChange} onSubmit={this.handleSubmit}
+                  onChange={this.handleChange}
                   value={this.state.input}
                 />
-                <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>Search</Button>
+                <Button className="search-button" type='submit'>Search</Button>
             </Form>
           </div>
         </Navbar>

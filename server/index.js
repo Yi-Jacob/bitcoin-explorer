@@ -4,7 +4,6 @@ const app = express();
 const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
-const ClientError = require('./client-error');
 const expressJson = express.json();
 
 app.use(expressJson);
@@ -60,16 +59,13 @@ app.post('/api/bookmarks', (req, res, next) => {
     });
 });
 
-app.delete('/api/bookmark/:bookmarkId', (req, res) => {
+app.delete('/api/bookmarks/:bookmarkId', (req, res) => {
   const bookmarkId = Number(req.params.bookmarkId);
   const sql = `
   delete from "bookmarks"
   where "bookmarkId" = ${bookmarkId}
   returning *
   `;
-  if (!Number(bookmarkId)) {
-    throw new ClientError(401, 'invalid login');
-  }
   db.query(sql)
     .then(result => {
       const deletedBookmark = result.rows[0];

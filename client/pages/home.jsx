@@ -14,7 +14,6 @@ export default class Home extends React.Component {
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   handleChange(event) {
@@ -24,16 +23,15 @@ export default class Home extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.history.push('/search-results?address=' + this.state.input);
-  }
-
-  handleClick(event) {
-    this.props.history.push('/bookmarks');
+    this.setState({
+      input: ''
+    });
   }
 
   render() {
     return (
       <>
-        <Nav history={this.props.history} onClick={this.handleClick} />
+        <Nav history={this.props.history} />
         <div className="container" style={{ maxWidth: '1200px' }}>
           <div className="row orange my-4">
             <div className="col-sm-12">
@@ -47,13 +45,14 @@ export default class Home extends React.Component {
           </div>
           <div className="row justify-content-center">
             <Form onSubmit={this.handleSubmit} className='my-3 px-5 "col-sm-11'>
-              <InputGroup className="mb-2" onSubmit={this.handleSubmit}>
+              <InputGroup className="mb-2" >
                 <FormControl
                   placeholder="Search for your Wallet Address"
-                  onChange={this.handleChange} onSubmit={this.handleSubmit}
                   className='orange-border'
+                  onChange={this.handleChange}
+                  value={this.state.input}
                 />
-                <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>
+                <Button className="search-button" type='submit'>
                   Search
                 </Button>
               </InputGroup>
