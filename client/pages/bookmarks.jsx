@@ -47,7 +47,7 @@ export default class Bookmarks extends React.Component {
       method: 'delete'
     });
     this.setState(prevState => ({
-      bookmarkData: prevState.bookmarkData.filter(row => row.bookmarkId !== bookmarkId)
+      bookmarkData: prevState.bookmarkData.filter(bookmark => bookmark.bookmarkId !== bookmarkId)
     }));
   }
 
