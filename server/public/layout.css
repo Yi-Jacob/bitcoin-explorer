@@ -8,15 +8,23 @@
   }
 
   .address-header {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   .info-text {
-    font-size: 42px;
+    font-size: 36px;
   }
 
   .bookmark-btn {
     font-size: 32px;
     margin-left: 0.5rem;
+  }
+
+  .nav-bookmark-btn {
+    top: 11px;
+  }
+
+  .bookmark-header {
+    font-size: 26px;
   }
 }

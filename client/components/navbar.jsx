@@ -1,7 +1,8 @@
 import React from 'react';
 import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 
-class Nav extends React.Component {
+export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
@@ -27,22 +28,25 @@ class Nav extends React.Component {
     return (
       <>
         <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
-          <div className="container-fluid">
+          <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font'>
               <div className="orange font-raleway">
-                <i className="fa-brands fa-btc orange" />itcoin Exlorer
+                <i className="fa-brands fa-btc" />itcoin Exlorer
               </div>
             </Navbar.Brand>
+            <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
+              <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
+            </NavLink>
 
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
                   placeholder="Search for Wallet Address"
                   className="me-3 nav-input"
-                  onChange={this.handleChange} onSubmit={this.handleSubmit}
+                  onChange={this.handleChange}
                   value={this.state.input}
                 />
-                <Button className="search-button" onChange={this.handleChange} onSubmit={this.handleSubmit} type='submit'>Search</Button>
+                <Button className="search-button" type='submit'>Search</Button>
             </Form>
           </div>
         </Navbar>
@@ -50,5 +54,3 @@ class Nav extends React.Component {
     );
   }
 }
-
-export default Nav;

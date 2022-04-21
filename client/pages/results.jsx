@@ -99,7 +99,7 @@ export default class Results extends React.Component {
     return (
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
-        <div className="container-fluid">
+        <div className="container-fluid" style={{ maxWidth: '1200px' }}>
           <div className="row my-4 margin-right-10 margin-left-6">
             <div className='col-sm-9 col-md-11'>
               <p className='address-header font-titillium-web font-underline'>
@@ -113,7 +113,7 @@ export default class Results extends React.Component {
           <div className="row my-4 margin-left-1 margin-right-1">
             <Card className='mb-3 orange-border font-titillium-web px-4 py-4 grey-background'>
               <div className="row no-gutters">
-                <div className="col-md-3 col-sm-10 px-1 justify-content-center margin-left-14">
+                <div className="col-md-3 col-sm-10 px-1 justify-content-center margin-left-14" style={{ minWidth: '275px' }}>
                   <img className='black-border' src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${this.state.address}`} alt="bitcoin QR code generator" height="250" width="275" />
                 </div>
                 <div className="col-md-8 col-sm-10 margin-left-2 px-0 justify-content-start align-self-center">
@@ -124,10 +124,10 @@ export default class Results extends React.Component {
             </Card>
           </div>
           <div className="row my-4 margin-left-1 margin-right-1 px-0 justify-content-center">
-            <Card className='orange-border padding-zero font-size-20 grey-background'>
-              <Card.Header className='mx-0 font-titillium-web font-bold'>Last 3 Transactions</Card.Header>
+            <Card className='orange-border padding-zero font-size-20 grey-background px-2'>
+              <Card.Header className='mx-0 font-titillium-web font-bold'>Transaction History</Card.Header>
               <ul className='px-4 py-2'>
-                {this.state.transactionData.slice(0, 3).map((transactionData, i) => {
+                {this.state.transactionData.slice(0, 5).map((transactionData, i) => {
                   return (
                     <li key={i}>
                       <Card.Title>Transaction ID: {transactionData.txid}</Card.Title>

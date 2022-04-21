@@ -119,3 +119,23 @@
 .bookmark-btn:hover {
   color: #f6781e;
 }
+
+.nav-bookmark-btn {
+  background: none;
+  border: none;
+  position: absolute;
+  left: 110px;
+  top: 12px;
+}
+
+.nav-bookmark-btn:hover {
+  color: white;
+}
+
+.margin-right-2 {
+  margin-right: 2rem;
+}
+
+.bookmark-header {
+  font-size: 16px;
+}
