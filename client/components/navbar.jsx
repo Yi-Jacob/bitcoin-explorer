@@ -38,7 +38,7 @@ class Nav extends React.Component {
                 <i className="fa-brands fa-btc" />itcoin Exlorer
               </div>
             </Navbar.Brand>
-            <button className='nav-bookmark-btn nav-font' href='/bookmarks' onClick={this.handleClick}>
+            <button className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
               <a href='/bookmarks'>
                 <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
               </a>
