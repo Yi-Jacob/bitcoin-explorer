@@ -147,3 +147,12 @@
   background: none;
   border: none;
 }
+
+.home-info-text {
+  font-size: 24px;
+}
+
+.sub-info-text {
+  font-size: 16px;
+  padding: 4px;
+}

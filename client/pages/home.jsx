@@ -79,7 +79,7 @@ export default class Home extends React.Component {
             </div>
           </div>
           <div className="row justify-content-center">
-            <Form onSubmit={this.handleSubmit} className='my-3 px-5 "col-sm-11'>
+            <Form onSubmit={this.handleSubmit} className='my-3 px-2 "col-sm-11'>
               <InputGroup className="mb-2" >
                 <FormControl
                   placeholder="Search for your Wallet Address"
@@ -93,24 +93,25 @@ export default class Home extends React.Component {
               </InputGroup>
             </Form>
           </div>
-          <div className="row justify-content-center">
-            <div className="col-md-3">
+          <div className="row justify-content-between">
+            <Card className='orange-border padding-zero grey-background mb-3 '>
+              <Card.Header className='font-titillium-web font-bold home-info-text  justify-content-between'>Difficulty Adjustment</Card.Header>
+              <div className="row">
+                <Card.Title className='sub-info-text col-md-4'>Estimated Difficulty Change: {Number(this.state.difficulty.difficultyChange).toFixed(2)}%</Card.Title>
+                <Card.Title className='sub-info-text col-md-4'>Current Period Progress: {Number(this.state.difficulty.progressPercent).toFixed(2)}%</Card.Title>
+                <Card.Title className='sub-info-text col-md-4'>Remaining Blocks: {this.state.difficulty.remainingBlocks}</Card.Title>
+              </div>
+             </Card>
+
+            <div className="col-md-4" style={{ minWidth: '355' }}>
               <Card className='orange-border padding-zero grey-background mb-3'>
-                <Card.Header className='font-titillium-web font-bold address-header'>Difficulty Adjustment</Card.Header>
-                <Card.Title className='bookmark-header'>{this.state.difficulty.difficultyChange}</Card.Title>
-                <Card.Title className='bookmark-header'>{this.state.difficulty.progressPercent}</Card.Title>
-                <Card.Title className='bookmark-header'>{this.state.difficulty.remainingBlocks}</Card.Title>
-              </Card>
-            </div>
-            <div className="col-md-3">
-              <Card className='orange-border padding-zero  grey-background mb-3'>
                 <Card.Header className='font-titillium-web font-bold address-header'>Current Fees</Card.Header>
-                <Card.Title className='bookmark-header'>{this.state.fees.fastestFee}</Card.Title>
-                <Card.Title className='bookmark-header'>{this.state.fees.hourFee}</Card.Title>
-                <Card.Title className='bookmark-header'>{this.state.fees.minimumFee}</Card.Title>
+                <Card.Title className='sub-info-text'>High Priority: {this.state.fees.fastestFee} sat/vB</Card.Title>
+                <Card.Title className='sub-info-text'>Medium Priority: {this.state.fees.hourFee} sat/vB</Card.Title>
+                <Card.Title className='sub-info-text'>Low Priority: {this.state.fees.minimumFee} sat/vB</Card.Title>
               </Card>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-4" style={{ minWidth: '355' }}>
               <Card className='orange-border padding-zero grey-background mb-3'>
                 <Card.Header className='font-titillium-web font-bold address-header'>Latest Blocks</Card.Header>
                 <ul>
@@ -118,10 +119,12 @@ export default class Home extends React.Component {
                     return (
                       <div key={i}>
                         <li key={i}>
-                          <Card.Title className='bookmark-header'>{this.state.blocks[i].height}</Card.Title>
-                        </li>
-                        <li>
-                          <Card.Title className='bookmark-header'>{this.state.blocks[i].tx_count}</Card.Title>
+                          <Card.Title className='sub-info-text'>Block Height: {this.state.blocks[i].height}</Card.Title>
+                          <ul>
+                            <li>
+                              <Card.Title className='sub-info-text'>Number of Transactions: {this.state.blocks[i].tx_count}</Card.Title>
+                            </li>
+                          </ul>
                         </li>
                       </div>
                     );
