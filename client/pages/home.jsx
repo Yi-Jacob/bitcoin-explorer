@@ -5,7 +5,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Nav from '../components/navbar';
-import Card from 'react-bootstrap/Card';
+import moment from 'moment';
 
 export default class Home extends React.Component {
 
@@ -26,7 +26,8 @@ export default class Home extends React.Component {
       blocks: [
         {
           height: null,
-          tx_count: 0
+          tx_count: 0,
+          timestamp: null
         }
       ]
     });
@@ -94,77 +95,73 @@ export default class Home extends React.Component {
               </InputGroup>
             </Form>
           </div>
-          <div className="row justify-content-between">
-            <Accordion defaultActiveKey={['0']} alwaysOpen>
-              <Accordion.Item eventKey="0">
-                <Accordion.Header>Accordion Item #1</Accordion.Header>
-                <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                  est laborum.
+          <div className="row">
+            <Accordion alwaysOpen>
+              <Accordion.Item eventKey="0" className='orange-border'>
+                <Accordion.Header>
+                  <h2 className='accordion-header'>Difficulty Adjustment</h2>
+                 </Accordion.Header>
+                <Accordion.Body className='justify-content-center px-2'>
+                  <div className="row mx-4">
+                    <div className='col-md-4'>
+                      <p className='accordion-info-text'>Estimated Difficulty Change: {Number(this.state.difficulty.difficultyChange).toFixed(2)}%</p>
+                    </div>
+                    <div className='col-md-4'>
+                      <p className='accordion-info-text'>Current Period Progress: {Number(this.state.difficulty.progressPercent).toFixed(2)}%</p>
+                    </div>
+                    <div className='col-md-4'>
+                      <p className='accordion-info-text'>Remaining Blocks: {this.state.difficulty.remainingBlocks}</p>
+                    </div>
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
-              <Accordion.Item eventKey="1">
-                <Accordion.Header>Accordion Item #2</Accordion.Header>
+              <Accordion.Item eventKey="1" className='orange-border'>
+                <Accordion.Header>
+                  <h2 className='accordion-header'>Current Transaction Fees</h2>
+                </Accordion.Header>
+                <Accordion.Body className='justify-content-center px-auto'>
+                  <div className="row mx-4">
+                    <div className='sub-info-text col-md-4'>
+                      <p className='accordion-info-text'>High Priority: {this.state.fees.fastestFee} sat/vB</p>
+                    </div>
+                    <div className='sub-info-text col-md-4'>
+                      <p className='accordion-info-text'>Medium Priority: {this.state.fees.hourFee} sat/vB</p>
+                    </div>
+                    <div className='sub-info-text col-md-4'>
+                      <p className='accordion-info-text'>Low Priority: {this.state.fees.minimumFee} sat/vB</p>
+                    </div>
+                  </div>
+                </Accordion.Body>
+              </Accordion.Item>
+              <Accordion.Item eventKey="2" className='orange-border'>
+                <Accordion.Header>
+                  <h2 className='accordion-header'>Latest Blocks</h2>
+                </Accordion.Header>
                 <Accordion.Body>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                  commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                  cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                  est laborum.
+                  <div className='row mx-1'>
+                    {this.state.blocks.slice(0, 3).map((block, i) => {
+                      return (
+                        <>
+                          <div key={i} className='sub-info-text col-md-4'>
+                            <h2>Block Height: {this.state.blocks[i].height}</h2>
+                            <ul>
+                              <li>
+                                <p className=''> Number of Transactions: {this.state.blocks[i].tx_count}</p>
+                              </li>
+                              <li>
+                                <p className=''>Timestamp: {(moment.unix(this.state.blocks[i].timestamp).format('MMMM Do YYYY, h:mm:ss a').toString())}</p>
+                              </li>
+                            </ul>
+                          </div>
+                        </>
+
+                      );
+                    }
+                    )}
+                  </div>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
-            <Card className='orange-border padding-zero grey-background mb-3 '>
-              <Card.Header className='font-titillium-web font-bold home-info-text  justify-content-between'>Difficulty Adjustment</Card.Header>
-              <div className="row">
-                <Card.Title className='sub-info-text col-md-4'>Estimated Difficulty Change: {Number(this.state.difficulty.difficultyChange).toFixed(2)}%</Card.Title>
-                <Card.Title className='sub-info-text col-md-4'>Current Period Progress: {Number(this.state.difficulty.progressPercent).toFixed(2)}%</Card.Title>
-                <Card.Title className='sub-info-text col-md-4'>Remaining Blocks: {this.state.difficulty.remainingBlocks}</Card.Title>
-              </div>
-            </Card>
-
-            <div className="col-md-4" style={{ minWidth: '355' }}>
-              <Card className='orange-border padding-zero grey-background mb-3'>
-                <Card.Header className='font-titillium-web font-bold address-header'>Current Fees</Card.Header>
-                <Card.Title className='sub-info-text'>High Priority: {this.state.fees.fastestFee} sat/vB</Card.Title>
-                <Card.Title className='sub-info-text'>Medium Priority: {this.state.fees.hourFee} sat/vB</Card.Title>
-                <Card.Title className='sub-info-text'>Low Priority: {this.state.fees.minimumFee} sat/vB</Card.Title>
-              </Card>
-            </div>
-            <div className="col-md-4" style={{ minWidth: '355' }}>
-              <Card className='orange-border padding-zero grey-background mb-3'>
-                <Card.Header className='font-titillium-web font-bold address-header'>Latest Blocks</Card.Header>
-                <ul>
-                  {this.state.blocks.slice(0, 3).map((block, i) => {
-                    return (
-                      <div key={i}>
-                        <li key={i}>
-                          <Card.Title className='sub-info-text'>Block Height: {this.state.blocks[i].height}</Card.Title>
-                          <ul>
-                            <li>
-                              <Card.Title className='sub-info-text'>Number of Transactions: {this.state.blocks[i].tx_count}</Card.Title>
-                            </li>
-                          </ul>
-                        </li>
-                      </div>
-                    );
-                  }
-                  )}
-                </ul>
-              </Card>
-            </div>
-          </div>
-          <div className="row my-4 px-2 justify-content-center">
-            <div className="col-sm-10">
-              <h2 className='text-center font-titillium-web font-italic font-bold'>“I don&apos;t think there&apos;s anything more important in my lifetime to work on (referring to Bitcoin)” Jack Dorsey CEO and Co-Founder of Twitter &amp; Cashapp</h2>
-            </div>
           </div>
         </div>
       </>
