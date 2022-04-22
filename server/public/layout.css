@@ -29,6 +29,10 @@
   }
 
   .accordion-info-text {
-    font-size: 22px;
+    font-size: 20px;
+  }
+
+  .accordion-header {
+    font-size: 28px;
   }
 }

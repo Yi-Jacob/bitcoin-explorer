@@ -69,7 +69,7 @@ export default class Home extends React.Component {
     return (
       <>
         <Nav history={this.props.history} />
-        <div className="container" style={{ maxWidth: '1200px' }}>
+        <div className="container" style={{ maxWidth: '1100px' }}>
           <div className="row orange my-4">
             <div className="col-sm-12">
               <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Explorer</h1>
@@ -80,7 +80,7 @@ export default class Home extends React.Component {
               <h2 className='text-center font-titillium-web font-bold'><span className='font-italic'>Explore</span> the Bitcoin Blockchain in <span className='font-italic '>Real-Time</span></h2>
             </div>
           </div>
-          <div className="row justify-content-center">
+          <div className="row justify-content-center mb-4" >
             <Form onSubmit={this.handleSubmit} className='my-3 px-2 "col-sm-11'>
               <InputGroup className="mb-2" >
                 <FormControl
@@ -95,7 +95,7 @@ export default class Home extends React.Component {
               </InputGroup>
             </Form>
           </div>
-          <div className="row mb-3">
+          <div className="row mb-3 justify-content-center">
             <Accordion alwaysOpen>
               <Accordion.Item eventKey="0" className='orange-border'>
                 <Accordion.Header>
@@ -110,7 +110,7 @@ export default class Home extends React.Component {
                       <p className='accordion-info-text'>Current Period Progress: {Number(this.state.difficulty.progressPercent).toFixed(2)}%</p>
                     </div>
                     <div className='col-md-4'>
-                      <p className='accordion-info-text'>Remaining Blocks: {this.state.difficulty.remainingBlocks}</p>
+                      <p className='accordion-info-text'>Remaining Blocks: {this.state.difficulty.remainingBlocks} <span className='small-text py-3 my-3'>~{Number(this.state.difficulty.remainingBlocks / 144).toFixed(1)} days</span></p>
                     </div>
                   </div>
                 </Accordion.Body>

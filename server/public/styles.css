@@ -166,3 +166,12 @@
   background-color: black;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }
+
+.small-text {
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.accordion-header {
+  font-size: 18px;
+}
