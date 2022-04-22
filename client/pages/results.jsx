@@ -124,7 +124,7 @@ export default class Results extends React.Component {
             </Card>
           </div>
           <div className="row mt-3 mb-4 margin-left-1 margin-right-1 px-0 justify-content-center">
-            <Card className='orange-border padding-zero font-size-20 grey-background px-2'>
+            <Card className='orange-border padding-zero font-size-20 grey-background'>
               <Card.Header className='mx-0 font-titillium-web font-bold'>Transaction History</Card.Header>
               <ul className='px-4 py-2'>
                 {this.state.transactionData.slice(0, 5).map((transactionData, i) => {
