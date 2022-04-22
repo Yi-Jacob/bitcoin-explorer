@@ -72,12 +72,12 @@ export default class Home extends React.Component {
         <div className="container" style={{ maxWidth: '1200px' }}>
           <div className="row orange my-4">
             <div className="col-sm-12">
-              <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Exlorer</h1>
+              <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Explorer</h1>
             </div>
           </div>
           <div className="row my-3">
             <div className="col-sm-12">
-              <h2 className='text-center font-titillium-web font-italic font-bold'>Your one-stop shop to explore the Bitcoin Blockchain</h2>
+              <h2 className='text-center font-titillium-web font-bold'><span className='font-italic'>Explore</span> the Bitcoin Blockchain in <span className='font-italic '>Real-Time</span></h2>
             </div>
           </div>
           <div className="row justify-content-center">
@@ -95,7 +95,7 @@ export default class Home extends React.Component {
               </InputGroup>
             </Form>
           </div>
-          <div className="row">
+          <div className="row mb-3">
             <Accordion alwaysOpen>
               <Accordion.Item eventKey="0" className='orange-border'>
                 <Accordion.Header>
@@ -154,7 +154,6 @@ export default class Home extends React.Component {
                             </ul>
                           </div>
                         </>
-
                       );
                     }
                     )}
