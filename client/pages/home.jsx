@@ -14,7 +14,7 @@ export default class Home extends React.Component {
     this.state = ({
       input: '',
       difficulty: {
-        difficultyChange: null,
+        difficultyChange: 0,
         remainingBlocks: null,
         progressPercent: null
       },
@@ -104,13 +104,18 @@ export default class Home extends React.Component {
                 <Accordion.Body className='justify-content-center px-2'>
                   <div className="row mx-4">
                     <div className='col-md-4'>
-                      <p className='accordion-info-text'>Estimated Difficulty Change: {Number(this.state.difficulty.difficultyChange).toFixed(2)}%</p>
+                      <p className='accordion-info-text'>Estimated Difficulty Change:
+                      <span> </span>
+                       <span className={this.state.difficulty.difficultyChange > 0 ? 'green' : 'red'}>
+                         {Number(this.state.difficulty.difficultyChange).toFixed(2)}%
+                       </span>
+                      </p>
                     </div>
                     <div className='col-md-4'>
                       <p className='accordion-info-text'>Current Period Progress: {Number(this.state.difficulty.progressPercent).toFixed(2)}%</p>
                     </div>
                     <div className='col-md-4'>
-                      <p className='accordion-info-text'>Remaining Blocks: {this.state.difficulty.remainingBlocks} <span className='small-text py-3 my-3'>~{Number(this.state.difficulty.remainingBlocks / 144).toFixed(1)} days</span></p>
+                      <p className='accordion-info-text'>Remaining Blocks: {this.state.difficulty.remainingBlocks} <span className='small-text py-3 my-4'>~{Number(this.state.difficulty.remainingBlocks / 144).toFixed(1)} days</span></p>
                     </div>
                   </div>
                 </Accordion.Body>

@@ -46,7 +46,9 @@ export default class Nav extends React.Component {
             <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
               <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
             </NavLink>
-            <a href='google.com'> {this.state.price}
+            <a href="https://nakamotoinstitute.org/bitcoin/" className='orange'>
+              <i className="fa-brands fa-bitcoin"></i>
+              {this.state.price}
             </a>
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
