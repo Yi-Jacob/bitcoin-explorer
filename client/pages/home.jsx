@@ -145,10 +145,10 @@ export default class Home extends React.Component {
                           <div key={i} className='sub-info-text col-md-4'>
                             <h2>Block Height: {this.state.blocks[i].height}</h2>
                             <ul>
-                              <li>
+                              <li >
                                 <p className=''> Number of Transactions: {this.state.blocks[i].tx_count}</p>
                               </li>
-                              <li>
+                              <li >
                                 <p className=''>Timestamp: {(moment.unix(this.state.blocks[i].timestamp).format('MMMM Do YYYY, h:mm:ss a').toString())}</p>
                               </li>
                             </ul>

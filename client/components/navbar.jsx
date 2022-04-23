@@ -6,7 +6,8 @@ export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      input: ''
+      input: '',
+      price: null
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +25,14 @@ export default class Nav extends React.Component {
     });
   }
 
+  componentDidMount() {
+    fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ price: data.bpi.USD.rate });
+      });
+  }
+
   render() {
     return (
       <>
@@ -37,7 +46,8 @@ export default class Nav extends React.Component {
             <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
               <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
             </NavLink>
-
+            <a href='google.com'> {this.state.price}
+            </a>
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
