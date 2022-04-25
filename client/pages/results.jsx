@@ -8,7 +8,8 @@ export default class Results extends React.Component {
     super(props);
     this.state = ({
       address: queryString.parse(this.props.location.search).address,
-      input: '',
+      price: null,
+      input: null,
       walletData: {
         chain_stats: {
           tx_count: 0,
@@ -17,18 +18,6 @@ export default class Results extends React.Component {
         }
       },
       transactionData: [
-        {
-          txid: '',
-          status: {
-            block_height: 0
-          }
-        },
-        {
-          txid: '',
-          status: {
-            block_height: 0
-          }
-        },
         {
           txid: '',
           status: {
@@ -65,6 +54,11 @@ export default class Results extends React.Component {
       .then(data => {
         this.setState({ transactionData: data });
       });
+    fetch('https://bitpay.com/api/rates')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ price: (data[2].rate) });
+      });
   }
 
   handleSubmit(event) {
@@ -98,7 +92,7 @@ export default class Results extends React.Component {
   render() {
     return (
       <>
-        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input}/>
+        <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
         <div className="container-fluid" style={{ maxWidth: '1200px' }}>
           <div className="row pt-3 margin-right-10 margin-left-6">
             <div className='col-sm-9 col-md-11'>
@@ -118,6 +112,12 @@ export default class Results extends React.Component {
                 </div>
                 <div className="col-md-8 col-sm-10 margin-left-1 px-0 mt-2 justify-content-start align-self-center">
                   <Card.Title className='info-text'>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
+                  <Card.Title className='info-text'>$
+                    {((this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) * (this.state.price)).toLocaleString(undefined, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2
+                    })}
+                  </Card.Title>
                   <Card.Title className='info-text'>Total Number of Transactions: {this.state.walletData.chain_stats.tx_count}</Card.Title>
                 </div>
               </div>

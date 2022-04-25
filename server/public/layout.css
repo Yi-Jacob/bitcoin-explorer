@@ -35,4 +35,10 @@
   .accordion-header {
     font-size: 28px;
   }
+
+  .nav-price {
+    position: absolute;
+    right: 380px;
+    font-size: 24px;
+  }
 }
