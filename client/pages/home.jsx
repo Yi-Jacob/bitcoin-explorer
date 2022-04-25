@@ -126,13 +126,13 @@ export default class Home extends React.Component {
                 </Accordion.Header>
                 <Accordion.Body className='justify-content-center px-auto'>
                   <div className="row mx-4">
-                    <div className='sub-info-text col-md-4'>
+                    <div className='sub-info-text col-md-4 mx-auto'>
                       <p className='accordion-info-text'>High Priority: {this.state.fees.fastestFee} sat/vB</p>
                     </div>
-                    <div className='sub-info-text col-md-4'>
+                    <div className='sub-info-text col-md-4 mx-auto'>
                       <p className='accordion-info-text'>Medium Priority: {this.state.fees.hourFee} sat/vB</p>
                     </div>
-                    <div className='sub-info-text col-md-4'>
+                    <div className='sub-info-text col-md-4 mx-auto'>
                       <p className='accordion-info-text'>Low Priority: {this.state.fees.minimumFee} sat/vB</p>
                     </div>
                   </div>
