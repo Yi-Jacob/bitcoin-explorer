@@ -12,7 +12,10 @@ app.use(staticMiddleware);
 app.use(errorMiddleware);
 
 const db = new pg.Pool({
-  connectionString: process.env.DATABASE_URL
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 app.get('/api/bookmarks', (req, res) => {
