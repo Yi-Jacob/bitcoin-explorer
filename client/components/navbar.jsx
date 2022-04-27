@@ -38,7 +38,7 @@ export default class Nav extends React.Component {
       <>
         <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
           <div className="container-fluid align-content-center">
-            <Navbar.Brand href="/Users/jacobyi/repos/final-project-template/server/public/index.html#/" className='orange nav-font'>
+            <Navbar.Brand href="/" className='orange nav-font'>
               <div className="orange font-raleway">
                 <i className="fa-brands fa-btc" />itcoin Explorer
               </div>
