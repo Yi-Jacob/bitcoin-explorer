@@ -29,7 +29,7 @@ export default class Bookmarks extends React.Component {
     fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
-        this.setState({ bookmarkData: data });
+        this.setState({ bookmarkData: [data] });
       });
 
   }
