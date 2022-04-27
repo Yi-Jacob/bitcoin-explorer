@@ -5,6 +5,7 @@ const errorMiddleware = require('./error-middleware');
 const staticMiddleware = require('./static-middleware');
 const pg = require('pg');
 const expressJson = express.json();
+const path = require('path');
 
 app.use(expressJson);
 app.use(staticMiddleware);
@@ -14,7 +15,7 @@ const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL
 });
 
-app.get('/api/bookmarks', (req, res) => {
+app.get('process.env.PORT/api/bookmarks', (req, res) => {
   const sql = `
     select *
       from "bookmarks"
@@ -32,7 +33,7 @@ app.get('/api/bookmarks', (req, res) => {
     });
 });
 
-app.post('/api/bookmarks', (req, res, next) => {
+app.post('process.env.PORT/api/bookmarks', (req, res, next) => {
   const { userId, walletAddress, data, bookmarkedAt } = req.body;
   const sql = `
   insert into "bookmarks" ("userId", "walletAddress", "data", "bookmarkedAt")
@@ -59,7 +60,7 @@ app.post('/api/bookmarks', (req, res, next) => {
     });
 });
 
-app.delete('/api/bookmarks/:bookmarkId', (req, res) => {
+app.delete('process.env.PORT/api/bookmarks/:bookmarkId', (req, res) => {
   const bookmarkId = Number(req.params.bookmarkId);
   const sql = `
   delete from "bookmarks"
@@ -79,6 +80,12 @@ app.delete('/api/bookmarks/:bookmarkId', (req, res) => {
       console.error(err);
       res.status(500).json({ error: 'An unexpected error occured.' });
     });
+});
+
+app.use((req, res) => {
+  res.sendFile('/index.html', {
+    root: path.join(__dirname, 'public')
+  });
 });
 
 app.listen(process.env.PORT, () => {

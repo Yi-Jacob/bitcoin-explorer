@@ -2,7 +2,7 @@ import React from 'react';
 import Home from './pages/home';
 import Results from './pages/results';
 import Bookmarks from './pages/bookmarks';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
 
