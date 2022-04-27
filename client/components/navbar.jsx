@@ -6,7 +6,8 @@ export default class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      input: ''
+      input: '',
+      price: null
     });
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,6 +25,15 @@ export default class Nav extends React.Component {
     });
   }
 
+  componentDidMount() {
+    // fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+    fetch('https://bitpay.com/api/rates')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ price: (data[2].rate).toLocaleString() });
+      });
+  }
+
   render() {
     return (
       <>
@@ -31,13 +41,15 @@ export default class Nav extends React.Component {
           <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font'>
               <div className="orange font-raleway">
-                <i className="fa-brands fa-btc" />itcoin Exlorer
+                <i className="fa-brands fa-btc" />itcoin Explorer
               </div>
             </Navbar.Brand>
             <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
               <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
             </NavLink>
-
+            <a href="https://nakamotoinstitute.org/bitcoin/" className='orange nav-price'>
+              <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
+            </a>
             <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"

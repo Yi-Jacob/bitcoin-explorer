@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../components/navbar';
 import Card from 'react-bootstrap/Card';
+import moment from 'moment-timezone';
 
 export default class Bookmarks extends React.Component {
   constructor(props) {
@@ -81,6 +82,9 @@ export default class Bookmarks extends React.Component {
                         <Card.Title className='bookmark-header'>Total Balance: {(bookmarkData.data.chain_stats.funded_txo_sum - bookmarkData.data.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
                       </li>
                     </ul>
+                    <Card.Footer>
+                        Bookmarked At: {(moment(bookmarkData.bookmarkedAt).tz('Atlantic/Azores').format('MMMM Do YYYY, h:mm:ss a'))}
+                    </Card.Footer>
                   </Card>
                     );
                   })

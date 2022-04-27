@@ -41,9 +41,9 @@
 }
 
 .search-button:hover {
-  color: black;
-  background: #f6781e;
-  border: black 1px solid;
+  color: #f6781e;
+  background: black;
+  border: #f6781e 1px solid;
 }
 
 .nav-input {
@@ -124,8 +124,9 @@
   background: none;
   border: none;
   position: absolute;
-  left: 110px;
+  left: 115px;
   top: 12px;
+  font-size: 26px;
 }
 
 .nav-bookmark-btn:hover {
@@ -174,4 +175,22 @@
 
 .accordion-header {
   font-size: 18px;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.nav-price {
+  position: relative;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.nav-price:hover {
+  color: white;
 }
