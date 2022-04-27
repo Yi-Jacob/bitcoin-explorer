@@ -26,9 +26,7 @@ export default class Bookmarks extends React.Component {
   }
 
   componentDidMount() {
-    fetch('/api/bookmarks', {
-      mode: 'no-cors'
-    })
+    fetch('/api/bookmarks')
       .then(res => res.json())
       .then(data => {
         this.setState({ bookmarkData: data });
