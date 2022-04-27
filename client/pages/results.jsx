@@ -80,6 +80,7 @@ export default class Results extends React.Component {
       bookmarkedAt: timeStamp
     };
     fetch('/api/bookmarks', {
+      mode: '/no-cors',
       method: 'post',
       headers: {
         'Content-Type': 'application/json'

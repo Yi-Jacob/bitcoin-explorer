@@ -36,13 +36,13 @@
   border: #f6781e 1px solid;
 }
 
-.orange-border {
-  border: #f6781e 1px solid;
+.search-button:hover {
+  color: black;
+  background: #f6781e;
+  border: black 1px solid;
 }
 
-.search-button:hover {
-  color: #f6781e;
-  background: black;
+.orange-border {
   border: #f6781e 1px solid;
 }
 
