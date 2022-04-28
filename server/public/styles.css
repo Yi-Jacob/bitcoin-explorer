@@ -1,5 +1,5 @@
 .orange {
-  color: #f6781e;
+  color: #f7931a;
 }
 
 .font-raleway {
@@ -26,24 +26,24 @@
 }
 
 .navbar-custom {
-  background: black;
-  height: 120px;
+  color: black;
+  background-color: black;
 }
 
 .search-button {
-  color: #f6781e;
+  color: #f7931a;
   background: none;
-  border: #f6781e 1px solid;
+  border: #f7931a 1px solid;
 }
 
 .search-button:hover {
   color: black;
-  background: #f6781e;
+  background: #f7931a;
   border: black 1px solid;
 }
 
 .orange-border {
-  border: #f6781e 1px solid;
+  border: #f7931a 1px solid;
 }
 
 .nav-input {
@@ -117,7 +117,7 @@
 }
 
 .bookmark-btn:hover {
-  color: #f6781e;
+  color: #f7931a;
 }
 
 .nav-bookmark-btn {
@@ -125,7 +125,7 @@
   border: none;
   position: absolute;
   left: 115px;
-  top: 12px;
+  top: 8px;
   font-size: 26px;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .accordion-button:not(.collapsed) {
-  color: #f6781e;
+  color: #f7931a;
   background-color: black;
   box-shadow: inset 0 -1px 0 rgb(0 0 0 / 13%);
 }

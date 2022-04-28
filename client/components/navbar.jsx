@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
-export default class Nav extends React.Component {
+export default class Navbar1 extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
@@ -36,7 +36,7 @@ export default class Nav extends React.Component {
   render() {
     return (
       <>
-        <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
+       <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
           <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font font-raleway'>
               <div className="orange ">
@@ -61,6 +61,37 @@ export default class Nav extends React.Component {
             </Form>
           </div>
         </Navbar>
+        {/* <Navbar className='navbar-custom'>
+          <Container fluid>
+            <Navbar.Brand href="/" className='orange nav-font font-raleway'>
+              <div className="orange ">
+                <i className="fa-brands fa-btc" />itcoin Explorer
+              </div>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="navbarScroll" />
+            <Navbar.Collapse id="navbarScroll">
+              <Nav
+                className="me-auto my-2 my-lg-0"
+                style={{ maxHeight: '100px' }}
+                navbarScroll
+              >
+                <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
+                  <i className='fa-solid fa-star orange nav-bookmark-btn'></i>Book
+                </NavLink>
+              </Nav>
+              <Form className="d-flex" onSubmit={this.handleSubmit}>
+                <FormControl
+                  type="search"
+                  placeholder="Search for Wallet Address"
+                  className="me-3 nav-input"
+                  onChange={this.handleChange}
+                  value={this.state.input}
+                />
+                <Button className="search-button" type='submit'>Search</Button>
+              </Form>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar> */}
       </>
     );
   }
