@@ -20,14 +20,21 @@ export default class Home extends React.Component {
       },
       fees: {
         fastestFee: null,
-        hourFee: null,
-        minimumFee: null
+        halfHourFee: null,
+        hourFee: null
       },
       blocks: [
         {
           height: null,
           tx_count: 0,
           timestamp: null
+        }
+      ],
+      transactions: [
+        {
+          txid: null,
+          value: null,
+          fee: null
         }
       ]
     });
@@ -66,7 +73,7 @@ export default class Home extends React.Component {
     fetch('https://mempool.space/api/mempool/recent')
       .then(res => res.json())
       .then(data => {
-        this.setState({ blocks: data });
+        this.setState({ transactions: data });
       });
   }
 
@@ -74,7 +81,7 @@ export default class Home extends React.Component {
     return (
       <>
         <Nav history={this.props.history} />
-        <div className="container" style={{ maxWidth: '1100px' }}>
+        <div className="container" style={{ maxWidth: '1000px' }}>
           <div className="row orange my-4">
             <div className="col-sm-12">
               <h1 className='text-center font-raleway font-italic font-bold'> <i className="fa-brands fa-btc" />itcoin Explorer</h1>
@@ -111,15 +118,15 @@ export default class Home extends React.Component {
                 <tbody>
                   <tr>
                     <td>High Priority</td>
-                    <td>{this.state.fees.fastestFee}</td>
+                    <td>{this.state.fees.fastestFee} sat/vB</td>
                   </tr>
                   <tr>
                     <td>Medium Priority</td>
-                    <td>{this.state.fees.hourFee}</td>
+                    <td>{this.state.fees.halfHourFee} sat/vB</td>
                   </tr>
                   <tr>
                     <td>Low Priority</td>
-                    <td>{this.state.fees.minimumFee}</td>
+                    <td>{this.state.fees.hourFee} sat/vB</td>
                   </tr>
                 </tbody>
               </Table>
@@ -149,7 +156,9 @@ export default class Home extends React.Component {
                 </tbody>
               </Table>
             </div>
-            <div className="row">
+          </div>
+          <div className="row mb-3 justify-content-center">
+            <div className="col-md-12">
               <Table striped bordered hover>
                 <thead>
                   <tr>
@@ -165,11 +174,11 @@ export default class Home extends React.Component {
                   {this.state.blocks.slice(0, 3).map((block, i) => {
                     return (
                       <>
-                      <tr key={i}>
+                        <tr key={i}>
                           <td>{this.state.blocks[i].height}</td>
                           <td>{this.state.blocks[i].tx_count}</td>
                           <td>{(moment.unix(this.state.blocks[i].timestamp).format('MMMM Do YYYY, h:mm:ss a').toString())}</td>
-                      </tr>
+                        </tr>
                       </>
                     );
                   }
@@ -177,6 +186,38 @@ export default class Home extends React.Component {
                 </tbody>
               </Table>
             </div>
+          </div>
+          <div className="row mb-3 justify-content-center">
+            <div className="col-md-12">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th colSpan={4}>Latest Transactions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Transaction Id</td>
+                    <td>Value</td>
+                    <td>Fees</td>
+                  </tr>
+                  {this.state.transactions.slice(0, 3).map((transaction, i) => {
+                    return (
+                      <>
+                        <tr key={i}>
+                          <td>{this.state.transactions[i].txid}</td>
+                          <td>{(this.state.transactions[i].value) / 100000000} BTC</td>
+                          <td>{(this.state.transactions[i].fee) / 100} sat/vB</td>
+                        </tr>
+                      </>
+                    );
+                  }
+                  )}
+                </tbody>
+              </Table>
+            </div>
+          </div>
+
             {/* <Accordion alwaysOpen>
               <Accordion.Item eventKey="0" className='orange-border'>
                 <Accordion.Header>
@@ -247,7 +288,7 @@ export default class Home extends React.Component {
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion> */}
-          </div>
+
         </div>
       </>
     );
