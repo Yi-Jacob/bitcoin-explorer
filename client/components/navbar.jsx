@@ -63,7 +63,7 @@ export default class Navbar1 extends React.Component {
         </Navbar> */}
         <Navbar className='navbar-custom d-flex' expand="md" sticky="top">
           <div className="container-fluid align-content-center">
-            <Navbar.Brand href="/" className='orange nav-font'>
+            <Navbar.Brand href="/" className='orange nav-font nav-brand navlink'>
               <div className="orange font-raleway">
                 <i className="fa-brands fa-btc" />itcoin Explorer
               </div>
@@ -71,7 +71,13 @@ export default class Navbar1 extends React.Component {
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0">
-                <NavLink to='/bookmarks' className='nav-bookmark nav-font orange '>
+                <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink' disabled>
+                  Transactions
+                </NavLink>
+                <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink' disabled>
+                  Mining
+                </NavLink>
+                <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
                   Bookmarks
                 </NavLink>
               </Nav>
@@ -82,7 +88,7 @@ export default class Navbar1 extends React.Component {
                 <FormControl
                   type="search"
                   placeholder="Search for Wallet Address"
-                  className="me-3 nav-input"
+                  className="me-3 nav-input orange-border"
                   onChange={this.handleChange}
                   value={this.state.input}
                 />

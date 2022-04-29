@@ -215,3 +215,11 @@ td:not(:first-child) {
 th:not(:first-child) {
   text-align: center;
 }
+
+.nav-brand {
+  font-size: 26px;
+}
+
+.navlink:hover {
+  color: white;
+}

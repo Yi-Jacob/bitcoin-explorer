@@ -97,10 +97,11 @@ export default class Home extends React.Component {
               <Form onSubmit={this.handleSubmit} className='my-3 px-2 "col-sm-11'>
                 <InputGroup className="mb-2" >
                   <FormControl
-                    placeholder="Search for your Wallet Address"
+                    placeholder="Search for your Wallet Address    i.e. 3FHNBLobJnbCTFTVakh5TXmEneyf5PT61B "
                     className='orange-border'
                     onChange={this.handleChange}
                     value={this.state.input}
+                    type='search'
                   />
                   <Button className="search-button" type='submit'>
                     Search
@@ -187,7 +188,7 @@ export default class Home extends React.Component {
                 <Table className='orange-border'>
                   <tbody>
                     <tr>
-                      <th colSpan={4} className='orange-border'>Latest Transactions</th>
+                      <td colSpan={4} className='orange-border'>Latest Transactions</td>
                     </tr>
                     <tr>
                       <td>Transaction Id</td>
