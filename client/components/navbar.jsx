@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Form, FormControl, Button } from 'react-bootstrap';
+import { Navbar, Form, FormControl, Button, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 
 export default class Navbar1 extends React.Component {
@@ -36,7 +36,7 @@ export default class Navbar1 extends React.Component {
   render() {
     return (
       <>
-       <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
+       {/* <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
           <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font font-raleway'>
               <div className="orange ">
@@ -60,25 +60,24 @@ export default class Navbar1 extends React.Component {
                 <Button className="search-button" type='submit'>Search</Button>
             </Form>
           </div>
-        </Navbar>
-        {/* <Navbar className='navbar-custom'>
-          <Container fluid>
-            <Navbar.Brand href="/" className='orange nav-font font-raleway'>
-              <div className="orange ">
+        </Navbar> */}
+        <Navbar className='navbar-custom d-flex' expand="md" sticky="top">
+          <div className="container-fluid align-content-center">
+            <Navbar.Brand href="/" className='orange nav-font'>
+              <div className="orange font-raleway">
                 <i className="fa-brands fa-btc" />itcoin Explorer
               </div>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
+            <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
-              <Nav
-                className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: '100px' }}
-                navbarScroll
-              >
-                <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
-                  <i className='fa-solid fa-star orange nav-bookmark-btn'></i>Book
+              <Nav className="me-auto my-2 my-lg-0">
+                <NavLink to='/bookmarks' className='nav-bookmark nav-font orange '>
+                  Bookmarks
                 </NavLink>
               </Nav>
+              <a href="https://nakamotoinstitute.org/bitcoin/" className='orange nav-price'>
+                <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
+              </a>
               <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
@@ -90,8 +89,8 @@ export default class Navbar1 extends React.Component {
                 <Button className="search-button" type='submit'>Search</Button>
               </Form>
             </Navbar.Collapse>
-          </Container>
-        </Navbar> */}
+          </div>
+        </Navbar>
       </>
     );
   }

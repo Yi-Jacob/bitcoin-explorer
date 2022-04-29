@@ -14,7 +14,6 @@
   font-weight: 900;
   font-style: italic;
   font-family: Raleway, sans-serif;
-  font-size: 28px;
 }
 
 .font-bold {
@@ -120,19 +119,6 @@
   color: #f7931a;
 }
 
-.nav-bookmark-btn {
-  background: none;
-  border: none;
-  position: absolute;
-  left: 115px;
-  top: 8px;
-  font-size: 26px;
-}
-
-.nav-bookmark-btn:hover {
-  color: white;
-}
-
 .margin-right-2 {
   margin-right: 2rem;
 }
@@ -192,5 +178,19 @@
 }
 
 .nav-price:hover {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar-toggler-icon {
+  background-color: #f7931a;
+  border: #f7931a 1px solid;
+  border-radius: 5%;
+}
+
+.nav-bookmark:hover {
   color: white;
 }
