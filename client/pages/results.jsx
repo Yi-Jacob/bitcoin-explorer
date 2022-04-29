@@ -100,7 +100,7 @@ export default class Results extends React.Component {
                 <p className='address-header font-titillium-web font-underline orange'>
                   Search Address: {this.state.walletData.address}
                   <button className='bookmark-btn' onClick={this.handleClick}>
-                    <i className={this.state.star ? 'fa-solid fa-star orange' : 'fa-regular fa-star orange'}></i>
+                    <i className={this.state.star ? 'fa-solid fa-star bookmark-btn' : 'fa-regular fa-star bookmark-btn'}></i>
                   </button>
                 </p>
               </div>

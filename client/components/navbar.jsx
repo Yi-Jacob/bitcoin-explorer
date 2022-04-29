@@ -70,7 +70,7 @@ export default class Navbar1 extends React.Component {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
-              <Nav className="me-auto my-2 my-lg-0">
+              <Nav className="me-auto my-2 my-lg-0 align-items-center">
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink' disabled>
                   Transactions
                 </NavLink>
@@ -80,10 +80,10 @@ export default class Navbar1 extends React.Component {
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
                   Bookmarks
                 </NavLink>
+                <h3 className='orange margin-left-2 nav-brand'>
+                  <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
+                </h3>
               </Nav>
-              <a href="https://nakamotoinstitute.org/bitcoin/" className='orange nav-price'>
-                <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
-              </a>
               <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"

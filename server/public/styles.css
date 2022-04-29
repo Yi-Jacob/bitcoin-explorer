@@ -100,7 +100,7 @@
 }
 
 .bookmark-btn {
-  color: black;
+  color: #f7931a;
   background: none;
   border: none;
   padding-left: 0;
@@ -116,7 +116,7 @@
 }
 
 .bookmark-btn:hover {
-  color: #f7931a;
+  color: white;
 }
 
 .margin-right-2 {
@@ -197,7 +197,7 @@ a {
 
 .black-background {
   background-color: black;
-  height: 100%;
+  height: 110%;
 }
 
 td {
@@ -207,10 +207,6 @@ td {
 
 table {
   background-color: #212121;
-}
-
-td:not(:first-child) {
-  text-align: center;
 }
 
 th:not(:first-child) {
@@ -223,4 +219,13 @@ th:not(:first-child) {
 
 .navlink:hover {
   color: white;
+}
+
+.card-header,
+.card-footer {
+  border: 1px solid #f7931a;
+}
+
+body {
+  background-color: black;
 }
