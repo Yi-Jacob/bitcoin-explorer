@@ -25,13 +25,13 @@
 }
 
 .navbar-custom {
-  color: black;
-  background-color: black;
+  color: #212121;
+  background-color: #212121;
 }
 
 .search-button {
   color: #f7931a;
-  background: none;
+  background: white;
   border: #f7931a 1px solid;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .grey-background {
-  background-color: #f0f0f0;
+  background-color: #212121;
 }
 
 .font-size-20 {
@@ -100,7 +100,7 @@
 }
 
 .bookmark-btn {
-  color: black;
+  color: #f7931a;
   background: none;
   border: none;
   padding-left: 0;
@@ -116,7 +116,7 @@
 }
 
 .bookmark-btn:hover {
-  color: #f7931a;
+  color: white;
 }
 
 .margin-right-2 {
@@ -193,4 +193,39 @@ a {
 
 .nav-bookmark:hover {
   color: white;
+}
+
+.black-background {
+  background-color: black;
+  height: 110%;
+}
+
+td {
+  color: #f7931a;
+  border: #f7931a 1px solid;
+}
+
+table {
+  background-color: #212121;
+}
+
+th:not(:first-child) {
+  text-align: center;
+}
+
+.nav-brand {
+  font-size: 26px;
+}
+
+.navlink:hover {
+  color: white;
+}
+
+.card-header,
+.card-footer {
+  border: 1px solid #f7931a;
+}
+
+body {
+  background-color: black;
 }

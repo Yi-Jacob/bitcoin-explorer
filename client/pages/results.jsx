@@ -93,13 +93,14 @@ export default class Results extends React.Component {
     return (
       <>
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
-        <div className="container-fluid" style={{ maxWidth: '1200px' }}>
+        <div className="black-background">
+          <div className="container-fluid" style={{ maxWidth: '1200px' }}>
           <div className="row pt-3 margin-right-10 margin-left-6">
             <div className='col-sm-9 col-md-11'>
-              <p className='address-header font-titillium-web font-underline'>
+              <p className='address-header font-titillium-web font-underline orange'>
                 Search Address: {this.state.walletData.address}
                 <button className='bookmark-btn' onClick={this.handleClick}>
-                  <i className={this.state.star ? 'fa-solid fa-star' : 'fa-regular fa-star'}></i>
+                  <i className={this.state.star ? 'fa-solid fa-star bookmark-btn' : 'fa-regular fa-star bookmark-btn'}></i>
                 </button>
               </p>
             </div>
@@ -108,9 +109,9 @@ export default class Results extends React.Component {
             <Card className='mb-2 my-2 orange-border font-titillium-web px-4 py-4 grey-background'>
               <div className="row no-gutters">
                 <div className="col-md-3 col-sm-10 px-1 justify-content-center margin-left-14" style={{ minWidth: '275px' }}>
-                  <img className='black-border' src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${this.state.address}`} alt="bitcoin QR code generator" height="250" width="275" />
+                  <img className='orange-border' src={`https://www.bitcoinqrcodemaker.com/api/?style=bitcoin&address=${this.state.address}`} alt="bitcoin QR code generator" height="250" width="275" />
                 </div>
-                <div className="col-md-8 col-sm-10 margin-left-1 px-0 mt-2 justify-content-start align-self-center">
+                <div className="col-md-8 col-sm-10 margin-left-1 px-0 mt-2 justify-content-start align-self-center orange">
                   <Card.Title className='info-text'>Total Balance: {(this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000} BTC</Card.Title>
                   <Card.Title className='info-text'>$
                     {((this.state.walletData.chain_stats.funded_txo_sum - this.state.walletData.chain_stats.spent_txo_sum) / 100000000 * (this.state.price)).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
@@ -120,10 +121,10 @@ export default class Results extends React.Component {
               </div>
             </Card>
           </div>
-          <div className="row mt-3 mb-4 margin-left-1 margin-right-1 px-0 justify-content-center">
+          <div className="row mt-3 mb-5 margin-left-1 margin-right-1 px-0 justify-content-center pb-5">
             <Card className='orange-border padding-zero font-size-20 grey-background'>
-              <Card.Header className='mx-0 font-titillium-web font-bold'>Transaction History</Card.Header>
-              <ul className='px-4 py-2'>
+              <Card.Header className='mx-0 font-titillium-web font-bold orange'>Transaction History</Card.Header>
+              <ul className='px-4 py-2 orange'>
                 {this.state.transactionData.slice(0, 5).map((transactionData, i) => {
                   return (
                     <li key={i}>
@@ -139,6 +140,8 @@ export default class Results extends React.Component {
               </ul>
             </Card>
           </div>
+        </div>
+
         </div>
       </>
     );
