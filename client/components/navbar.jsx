@@ -36,31 +36,6 @@ export default class Navbar1 extends React.Component {
   render() {
     return (
       <>
-       {/* <Navbar className='navbar-custom d-flex' expand="lg" sticky="top">
-          <div className="container-fluid align-content-center">
-            <Navbar.Brand href="/" className='orange nav-font font-raleway'>
-              <div className="orange ">
-                <i className="fa-brands fa-btc" />itcoin Explorer
-              </div>
-            </Navbar.Brand>
-            <NavLink to='/bookmarks' className='nav-bookmark-btn nav-font' onClick={this.handleClick}>
-              <i className='fa-solid fa-star orange nav-bookmark-btn'></i>
-            </NavLink>
-            <a href="https://nakamotoinstitute.org/bitcoin/" className='orange nav-price'>
-              <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
-            </a>
-            <Form className="d-flex" onSubmit={this.handleSubmit}>
-                <FormControl
-                  type="search"
-                  placeholder="Search for Wallet Address"
-                  className="me-3 nav-input"
-                  onChange={this.handleChange}
-                  value={this.state.input}
-                />
-                <Button className="search-button" type='submit'>Search</Button>
-            </Form>
-          </div>
-        </Navbar> */}
         <Navbar className='navbar-custom d-flex' expand="md" sticky="top">
           <div className="container-fluid align-content-center">
             <Navbar.Brand href="/" className='orange nav-font nav-brand navlink'>
@@ -80,9 +55,9 @@ export default class Navbar1 extends React.Component {
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
                   Bookmarks
                 </NavLink>
-                <h3 className='orange margin-left-2 nav-brand'>
-                  <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
-                </h3>
+                <NavLink to='/bookmarks' className='orange mx-2 navlink'>
+                 <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
+                </NavLink>
               </Nav>
               <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl
