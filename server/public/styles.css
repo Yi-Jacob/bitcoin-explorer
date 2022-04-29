@@ -25,13 +25,13 @@
 }
 
 .navbar-custom {
-  color: black;
-  background-color: black;
+  color: #212121;
+  background-color: #212121;
 }
 
 .search-button {
   color: #f7931a;
-  background: none;
+  background: white;
   border: #f7931a 1px solid;
 }
 
@@ -193,4 +193,25 @@ a {
 
 .nav-bookmark:hover {
   color: white;
+}
+
+.black-background {
+  background-color: black;
+}
+
+td {
+  color: #f7931a;
+  border: #f7931a 1px solid;
+}
+
+table {
+  background-color: #212121;
+}
+
+td:not(:first-child) {
+  text-align: center;
+}
+
+th:not(:first-child) {
+  text-align: center;
 }
