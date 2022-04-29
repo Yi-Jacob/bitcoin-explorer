@@ -1,5 +1,5 @@
 import React from 'react';
-import Accordion from 'react-bootstrap/Accordion';
+import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
@@ -63,6 +63,11 @@ export default class Home extends React.Component {
       .then(data => {
         this.setState({ blocks: data });
       });
+    fetch('https://mempool.space/api/mempool/recent')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ blocks: data });
+      });
   }
 
   render() {
@@ -96,7 +101,83 @@ export default class Home extends React.Component {
             </Form>
           </div>
           <div className="row mb-3 justify-content-center">
-            <Accordion alwaysOpen>
+            <div className="col-md-6">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th colSpan={2}>Current Transaction Fees</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>High Priority</td>
+                    <td>{this.state.fees.fastestFee}</td>
+                  </tr>
+                  <tr>
+                    <td>Medium Priority</td>
+                    <td>{this.state.fees.hourFee}</td>
+                  </tr>
+                  <tr>
+                    <td>Low Priority</td>
+                    <td>{this.state.fees.minimumFee}</td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className="col-md-6">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th colSpan={4}>Estimated Difficulty Adjustment</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Estimate change:</td>
+                    <td><span className={this.state.difficulty.difficultyChange > 0 ? 'green' : 'red'}>
+                      {Number(this.state.difficulty.difficultyChange).toFixed(2)}%
+                    </span></td>
+                  </tr>
+                  <tr>
+                    <td>Current Period Progress:</td>
+                    <td>{Number(this.state.difficulty.progressPercent).toFixed(2)}%</td>
+                  </tr>
+                  <tr>
+                    <td>Remaining Blocks</td>
+                    <td>{this.state.difficulty.remainingBlocks} <span className='small-text py-3 my-4'>~{Number(this.state.difficulty.remainingBlocks / 144).toFixed(1)} days</span></td>
+                  </tr>
+                </tbody>
+              </Table>
+            </div>
+            <div className="row">
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th colSpan={4}>Latest Blocks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Block Height</td>
+                    <td>Number of Transactions</td>
+                    <td>TimeStamp</td>
+                  </tr>
+                  {this.state.blocks.slice(0, 3).map((block, i) => {
+                    return (
+                      <>
+                      <tr key={i}>
+                          <td>{this.state.blocks[i].height}</td>
+                          <td>{this.state.blocks[i].tx_count}</td>
+                          <td>{(moment.unix(this.state.blocks[i].timestamp).format('MMMM Do YYYY, h:mm:ss a').toString())}</td>
+                      </tr>
+                      </>
+                    );
+                  }
+                  )}
+                </tbody>
+              </Table>
+            </div>
+            {/* <Accordion alwaysOpen>
               <Accordion.Item eventKey="0" className='orange-border'>
                 <Accordion.Header>
                   <h2 className='accordion-header'>Difficulty Adjustment</h2>
@@ -104,7 +185,7 @@ export default class Home extends React.Component {
                 <Accordion.Body className='justify-content-center px-2'>
                   <div className="row mx-4">
                     <div className='col-md-4'>
-                      <p className='accordion-info-text'>Estimated Difficulty Change:
+                      <p className='accordion-info-text'>
                       <span> </span>
                        <span className={this.state.difficulty.difficultyChange > 0 ? 'green' : 'red'}>
                          {Number(this.state.difficulty.difficultyChange).toFixed(2)}%
@@ -165,7 +246,7 @@ export default class Home extends React.Component {
                   </div>
                 </Accordion.Body>
               </Accordion.Item>
-            </Accordion>
+            </Accordion> */}
           </div>
         </div>
       </>
