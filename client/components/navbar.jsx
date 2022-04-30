@@ -45,7 +45,7 @@ export default class Navbar1 extends React.Component {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
-              <Nav className="me-auto my-2 my-lg-0 align-items-center">
+              <Nav className="me-auto my-2 my-lg-0 align-items-end justify-content-end">
                 <NavLink to='/transactions' className='nav-font orange mx-2 navlink'>
                   Transactions
                 </NavLink>
@@ -59,7 +59,7 @@ export default class Navbar1 extends React.Component {
                  <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
                 </a>
               </Nav>
-              <Form className="d-flex" onSubmit={this.handleSubmit}>
+              <Form className="d-flex py-3" onSubmit={this.handleSubmit}>
                 <FormControl
                   type="search"
                   placeholder="Search for Wallet Address"

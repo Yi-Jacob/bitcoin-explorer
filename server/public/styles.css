@@ -233,3 +233,7 @@ body {
 .card-text {
   font-size: 20px;
 }
+
+.nav-form {
+  width: 100%;
+}
