@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Nav from '../components/navbar';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
 
@@ -162,7 +163,7 @@ export default class Home extends React.Component {
                     <tr>
                       <td colSpan={4} className='font-bold'>Latest Blocks</td>
                     </tr>
-                    <tr>
+                    <tr className='font-bold'>
                       <td>Block Height</td>
                       <td>Number of Transactions</td>
                       <td>TimeStamp</td>
@@ -190,7 +191,7 @@ export default class Home extends React.Component {
                     <tr>
                       <td colSpan={4} className='orange-border font-bold'>Latest Transactions</td>
                     </tr>
-                    <tr>
+                    <tr className='font-bold'>
                       <td>Transaction Id</td>
                       <td>Value</td>
                       <td>Fees</td>
@@ -207,6 +208,13 @@ export default class Home extends React.Component {
                       );
                     }
                     )}
+                    <tr>
+                      <td colSpan={4}>
+                        <Link to='/transactions' className='orange mx-2 navlink font-bold'>
+                          View More
+                        </Link>
+                      </td>
+                    </tr>
                   </tbody>
                 </Table>
               </div>

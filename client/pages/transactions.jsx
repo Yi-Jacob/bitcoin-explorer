@@ -80,7 +80,7 @@ export default class Transactions extends React.Component {
                 <tr>
                   <td colSpan={4} className='orange-border font-bold'>Latest Transactions</td>
                 </tr>
-                <tr>
+                <tr className='font-bold'>
                   <td>Transaction Id</td>
                   <td>Value</td>
                   <td>Fees</td>
