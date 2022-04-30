@@ -5,6 +5,7 @@ import Bookmarks from './pages/bookmarks';
 import Transactions from './pages/transactions';
 import Mining from './pages/mining';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import Wrapper from './components/wrapper';
 
 export default class App extends React.Component {
 
@@ -14,15 +15,15 @@ export default class App extends React.Component {
         <Router>
           <Switch>
             <Route exact path="/"
-              component={Home} />
+              component={Wrapper(Home)} />
             <Route exact path="/search-results"
-              component={Results} />
+              component={Wrapper(Results)} />
             <Route exact path="/bookmarks"
-              component={Bookmarks} />
-            <Route exact path="/transactions"
-              component={Transactions} />
+              component={Wrapper(Bookmarks)} />
             <Route exact path="/mining"
-              component={Mining} />
+              component={Wrapper(Mining)} />
+            <Route exact path="/transactions"
+              component={Wrapper(Transactions)} />
           </Switch>
         </Router>
       </>

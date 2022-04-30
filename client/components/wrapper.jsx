@@ -1,8 +1,8 @@
-// import React, { Component, Fragment } from 'react';
-// import { withRouter } from 'react-router-dom';
+// import React, { Component, Fragment } from "react";
+// import { withRouter } from "react-router-dom";
 // import { Spinner } from 'react-bootstrap';
 
-// WrappedComponent => {
+// export default WrappedComponent => {
 //   class Wrapper extends Component {
 //     state = { isLoading: true };
 
@@ -19,7 +19,7 @@
 
 //     timer = () => this.setState({ isLoading: false }, () => this.clearTimer());
 
-//     setTimer = () => (this.timeout = setTimeout(this.timer, 500));
+//     setTimer = () => (this.timeout = setTimeout(this.timer, 3000));
 
 //     render() {
 //       return (
