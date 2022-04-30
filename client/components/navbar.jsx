@@ -46,10 +46,10 @@ export default class Navbar1 extends React.Component {
             <Navbar.Toggle aria-controls="navbarScroll"/>
             <Navbar.Collapse id="navbarScroll">
               <Nav className="me-auto my-2 my-lg-0 align-items-center">
-                <NavLink to='/transactions' className='nav-font orange mx-2 navlink' disabled>
+                <NavLink to='/transactions' className='nav-font orange mx-2 navlink'>
                   Transactions
                 </NavLink>
-                <NavLink to='/mining' className='nav-font orange mx-2 navlink' disabled>
+                <NavLink to='/mining' className='nav-font orange mx-2 navlink'>
                   Mining
                 </NavLink>
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
