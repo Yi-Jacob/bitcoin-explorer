@@ -180,6 +180,13 @@ export default class Home extends React.Component {
                       );
                     }
                     )}
+                    <tr>
+                      <td colSpan={4}>
+                        <Link to='/mining' className='orange mx-2 navlink font-bold'>
+                          View More
+                        </Link>
+                      </td>
+                    </tr>
                   </tbody>
                 </Table>
               </div>
