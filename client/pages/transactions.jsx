@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../components/navbar';
 import Table from 'react-bootstrap/Table';
+import Card from 'react-bootstrap/Card';
 
 export default class Transactions extends React.Component {
   constructor(props) {
@@ -52,6 +53,17 @@ export default class Transactions extends React.Component {
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
         <div className="row mx-4 my-4">
           <div className="col-md-12">
+            <Card className='mb-2 my-1 px-4 py-4 orange-border font-titillium-web grey-background'>
+              <Card.Title className='card-text orange'>
+                Transaction fees are the difference between the amount of bitcoin sent and the amount received.
+                Conceptually, transaction fees are a reflection of the speed with which a user wants their transaction validated on the blockchain.
+                The faster a user wants a transaction settled, the higher the fee will be.
+              </Card.Title>
+            </Card>
+          </div>
+        </div>
+        <div className="row mx-4 my-3">
+          <div className="col-md-12">
             <Table className='orange-border'>
               <tbody className='orange-border'>
                 <tr >
@@ -71,6 +83,15 @@ export default class Transactions extends React.Component {
                 </tr>
               </tbody>
             </Table>
+          </div>
+        </div>
+        <div className="row mx-4 my-3">
+          <div className="col-md-12">
+            <Card className='mb-2 my-1 px-4 py-4 orange-border font-titillium-web grey-background'>
+              <Card.Title className='card-text orange'>
+                Here are the last 10 transactions to occur.
+              </Card.Title>
+            </Card>
           </div>
         </div>
         <div className="row justify-content-center mx-4 my-4">

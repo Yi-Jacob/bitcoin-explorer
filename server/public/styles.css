@@ -229,3 +229,7 @@ th:not(:first-child) {
 body {
   background-color: black;
 }
+
+.card-text {
+  font-size: 20px;
+}
