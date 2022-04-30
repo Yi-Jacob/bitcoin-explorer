@@ -4,6 +4,10 @@
     "node": true,
     "browser": true
   },
+  "plugins": [
+    "prettier"
+  ],
+  "parser": "node_modules/babel",
   "extends": [
     "plugin:react/recommended",
     "eslint:recommended",

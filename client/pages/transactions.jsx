@@ -52,6 +52,7 @@ export default class Transactions extends React.Component {
       <div className="black-background">
         <Nav history={this.props.history} onSubmit={this.handleSubmit} onChange={this.handleChange} value={this.state.input} />
         <div className="row mx-4 my-4">
+          <h1 className='orange ml-2 font-titillium-web'>Transactions</h1>
           <div className="col-md-12">
             <Card className='mb-2 my-1 px-4 py-4 orange-border font-titillium-web grey-background'>
               <Card.Title className='card-text orange'>
