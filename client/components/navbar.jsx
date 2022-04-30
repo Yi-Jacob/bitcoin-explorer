@@ -49,7 +49,7 @@ export default class Navbar1 extends React.Component {
                 <NavLink to='/transactions' className='nav-font orange mx-2 navlink' disabled>
                   Transactions
                 </NavLink>
-                <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink' disabled>
+                <NavLink to='/mining' className='nav-font orange mx-2 navlink' disabled>
                   Mining
                 </NavLink>
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
