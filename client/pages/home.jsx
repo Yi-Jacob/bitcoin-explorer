@@ -114,7 +114,7 @@ export default class Home extends React.Component {
                 <Table className='orange-border'>
                   <tbody className='orange-border'>
                     <tr >
-                      <td colSpan={2} className='orange-border'>Current Transaction Fees</td>
+                      <td colSpan={2} className='orange-border font-bold'>Current Transaction Fees</td>
                     </tr>
                     <tr>
                       <td>High Priority<span className='small-text py-3 my-4'> ~ 10 minutes</span></td>
@@ -135,7 +135,7 @@ export default class Home extends React.Component {
                 <Table className='orange-border'>
                   <tbody>
                     <tr>
-                      <td colSpan={4}>Estimated Difficulty Adjustment</td>
+                      <td colSpan={4} className='font-bold'>Estimated Difficulty Adjustment</td>
                     </tr>
                     <tr>
                       <td>Estimate change:</td>
@@ -157,10 +157,10 @@ export default class Home extends React.Component {
             </div>
             <div className="row mb-3 justify-content-center">
               <div className="col-md-12">
-                <Table className='orange-border'>
+                <Table className='orange-border '>
                   <tbody>
                     <tr>
-                      <td colSpan={4}>Latest Blocks</td>
+                      <td colSpan={4} className='font-bold'>Latest Blocks</td>
                     </tr>
                     <tr>
                       <td>Block Height</td>
@@ -188,7 +188,7 @@ export default class Home extends React.Component {
                 <Table className='orange-border' responsive='sm'>
                   <tbody>
                     <tr>
-                      <td colSpan={4} className='orange-border'>Latest Transactions</td>
+                      <td colSpan={4} className='orange-border font-bold'>Latest Transactions</td>
                     </tr>
                     <tr>
                       <td>Transaction Id</td>

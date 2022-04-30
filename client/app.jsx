@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './pages/home';
 import Results from './pages/results';
 import Bookmarks from './pages/bookmarks';
+import Transactions from './pages/transactions';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
 export default class App extends React.Component {
@@ -17,6 +18,8 @@ export default class App extends React.Component {
               component={Results} />
             <Route exact path="/bookmarks"
               component={Bookmarks} />
+            <Route exact path="/transactions"
+              component={Transactions} />
           </Switch>
         </Router>
       </>
