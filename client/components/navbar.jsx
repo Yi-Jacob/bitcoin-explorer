@@ -55,9 +55,9 @@ export default class Navbar1 extends React.Component {
                 <NavLink to='/bookmarks' className='nav-font orange mx-2 navlink'>
                   Bookmarks
                 </NavLink>
-                <NavLink to='/bookmarks' className='orange mx-2 navlink'>
+                <a href='https://nakamotoinstitute.org/bitcoin/' className='orange mx-2 navlink'>
                  <i className="fa-brands fa-bitcoin"></i> = ${(this.state.price)}
-                </NavLink>
+                </a>
               </Nav>
               <Form className="d-flex" onSubmit={this.handleSubmit}>
                 <FormControl

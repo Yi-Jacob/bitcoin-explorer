@@ -53,10 +53,11 @@ export default class Mining extends React.Component {
       <div className="black-background">
         <Nav history={this.props.history} />
         <div className="row mx-4 my-3">
+          <h1 className='orange ml-2 font-titillium-web'>Mining</h1>
           <div className="col-md-12">
             <Card className='mb-2 my-1 px-4 py-4 orange-border font-titillium-web grey-background'>
               <Card.Title className='card-text orange'>
-                Mining is a core components of Bitcoin, it secures the Bitcoin blockchain and can be looked at as the process that actually builds the blockchain by discovering new blocks and joining them to the previous ones.
+                Mining is a core component of Bitcoin, it secures the Bitcoin blockchain and can be looked at as the process that actually builds the blockchain by discovering new blocks and joining them to the previous ones.
                 Miners spend resources to create new blocks for transactions to be placed into, and are rewarded for their efforts in newly minted bitcoin.
                 The difficulty is adjusted every 2016 blocks (every 2 weeks approximately) so that the average time between each block remains 10 minutes.
               </Card.Title>
