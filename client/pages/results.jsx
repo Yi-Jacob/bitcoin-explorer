@@ -34,8 +34,10 @@ export default class Results extends React.Component {
 
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
-      this.setState({ star: false, address: queryString.parse(location.search).address });
-      this.fetchData(queryString.parse(location.search).address);
+      if (location.pathname == '/search-results') {
+        this.setState({ star: false, address: queryString.parse(location.search).address });
+        this.fetchData(queryString.parse(location.search).address);
+      }
     });
     this.fetchData(this.state.address);
   }

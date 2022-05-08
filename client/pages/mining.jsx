@@ -36,16 +36,19 @@ export default class Mining extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://mempool.space/api/v1/difficulty-adjustment')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ difficulty: data });
-      });
+    Promise.all([
+      fetch('https://mempool.space/api/v1/difficulty-adjustment')
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ difficulty: data });
+        }),
     fetch('https://mempool.space/api/blocks/')
       .then(res => res.json())
       .then(data => {
         this.setState({ blocks: data });
-      });
+      })
+    ])
+
   }
 
   render() {
