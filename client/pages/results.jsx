@@ -34,8 +34,10 @@ export default class Results extends React.Component {
 
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
-      this.setState({ star: false, address: queryString.parse(location.search).address });
-      this.fetchData(queryString.parse(location.search).address);
+      if (location.pathname == '/search-results') {
+        this.setState({ star: false, address: queryString.parse(location.search).address });
+        this.fetchData(queryString.parse(location.search).address);
+      }
     });
     this.fetchData(this.state.address);
   }
@@ -45,15 +47,16 @@ export default class Results extends React.Component {
   }
 
   fetchData(address) {
-    fetch(`https://mempool.space/api/address/${address}`)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ walletData: data });
-      })
-      .catch(err => {
-        alert('No Results Found', err)
-        this.setState({results: false})
-      });
+    Promise.all([
+      fetch(`https://mempool.space/api/address/${address}`)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ walletData: data });
+        })
+        .catch(err => {
+          alert('No Results Found', err)
+          this.setState({ results: false })
+        }),
     fetch(`https://mempool.space/api/address/${address}/txs`)
       .then(res => res.json())
       .then(data => {
@@ -61,12 +64,36 @@ export default class Results extends React.Component {
       })
       .catch(err => {
         this.setState({ results: false })
-      });
+      }),
     fetch('https://bitpay.com/api/rates')
       .then(res => res.json())
       .then(data => {
         this.setState({ price: (data[2].rate) });
-      });
+      })
+
+    ])
+    // fetch(`https://mempool.space/api/address/${address}`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ walletData: data });
+    //   })
+    //   .catch(err => {
+    //     alert('No Results Found', err)
+    //     this.setState({results: false})
+    //   });
+    // fetch(`https://mempool.space/api/address/${address}/txs`)
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ transactionData: data });
+    //   })
+    //   .catch(err => {
+    //     this.setState({ results: false })
+    //   });
+    // fetch('https://bitpay.com/api/rates')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ price: (data[2].rate) });
+    //   });
   }
 
   handleSubmit(event) {

@@ -35,16 +35,32 @@ export default class Transactions extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://mempool.space/api/v1/fees/recommended')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ fees: data });
-      });
-    fetch('https://mempool.space/api/mempool/recent')
-      .then(res => res.json())
-      .then(data => {
+    // Promise.all([
+    //   fetch('https://mempool.space/api/v1/fees/recommended'),
+    //   fetch('https://mempool.space/api/mempool/recent')
+    // ]).then(async ([data1, data2]) => {
+    //   const a = await data1.json();
+    //   const b = await data2.json();
+    //   return [a, b]
+    // })
+    //   .then((res) => {
+    //     this.setState({ fees: data });
+    //     console.log(res)
+    //   }).catch((err) => {
+    //     console.log(err);
+    //   });
+    Promise.all([
+      fetch('https://mempool.space/api/v1/fees/recommended')
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ fees: data });
+        }),
+      fetch('https://mempool.space/api/mempool/recent')
+        .then(res => res.json())
+        .then(data => {
         this.setState({ transactions: data });
-      });
+      })
+    ])
   }
 
   render() {
