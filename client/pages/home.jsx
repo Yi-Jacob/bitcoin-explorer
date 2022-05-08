@@ -56,26 +56,48 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://mempool.space/api/v1/difficulty-adjustment')
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ difficulty: data });
-      });
+    Promise.all([
+      fetch('https://mempool.space/api/v1/difficulty-adjustment')
+        .then(res => res.json())
+        .then(data => {
+          this.setState({ difficulty: data });
+        }),
     fetch('https://mempool.space/api/v1/fees/recommended')
       .then(res => res.json())
       .then(data => {
         this.setState({ fees: data });
-      });
+      }),
     fetch('https://mempool.space/api/blocks/')
       .then(res => res.json())
       .then(data => {
         this.setState({ blocks: data });
-      });
+      }),
     fetch('https://mempool.space/api/mempool/recent')
       .then(res => res.json())
       .then(data => {
         this.setState({ transactions: data });
-      });
+      })
+    ])
+    // fetch('https://mempool.space/api/v1/difficulty-adjustment')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ difficulty: data });
+    //   });
+    // fetch('https://mempool.space/api/v1/fees/recommended')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ fees: data });
+    //   });
+    // fetch('https://mempool.space/api/blocks/')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ blocks: data });
+    //   });
+    // fetch('https://mempool.space/api/mempool/recent')
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     this.setState({ transactions: data });
+    //   });
   }
 
   render() {

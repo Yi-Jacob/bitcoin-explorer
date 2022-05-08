@@ -7,7 +7,7 @@
   "plugins": [
     "prettier"
   ],
-  "parser": "/usr/local/lib/node_modules/babel-eslint",
+  "parser": "/user/local/lib/node_modules/babel-eslint",
   "extends": [
     "plugin:react/recommended",
     "eslint:recommended",
